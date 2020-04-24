@@ -174,8 +174,9 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT,'static')
 
 SITE_ID = 1
 
-MEMDIA_ROOT = os.path.join(PROJECT_ROOT,'media')
+MEDIA_ROOT =  os.path.join(PROJECT_ROOT, 'files', 'media') 
 MEDIA_URL = '/media/'
+
 
 SITE_ID = 1 
 
