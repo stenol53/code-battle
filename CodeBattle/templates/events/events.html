@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />        
+    {% if not user.is_authenticated %}
+    <meta http-equiv="Refresh" content="0; url={% url 'account_login' %}" />
+    {% endif %}
+        
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 
     {% load static %}
@@ -13,45 +18,73 @@
 
     <title>События</title>
 </head>
+
 <body>
-    
+
+    <div style="display: flex; justify-content: center; text-align: center;">
+        <h1>Вы вошли как {{ user.name }} {{ user.sirname }}           
+            {% if user.is_staff %}
+                (админ) 
+            {% endif %}
+        </h1>
+
+        
+        {% if user.is_staff %}
+        <form style="padding-top: 25px; padding-left: 25px;" action="/admin">
+            <button type="submit">Перейти в админ-панель</button>
+        </form>
+            
+        {% endif %}
+            
+
+        <form style="padding-top: 25px; padding-left: 25px;" method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <button type="submit">Выход</button>
+        </form>
+    </div>
+
+
 
     {% if latest_events_list%}
-        {% for elem in latest_events_list %}
-            <div class="event-grid grid">
-                <!-- Это сама карточка эвента ее можно генерировать в цикле -->
-                <div class="event-grid--item card">
-                    <div class="card--top-side">
-                        <h3 class="card--title">{{ elem.event_title }}</h3>
-                        <div class="card--time">
-                            {% if elem.event_photo %}
-                                <img src="{{elem.event_photo}}" class="card--time-icon">
-                            {% endif%}
-                            <p class="card--time-text">{{ elem.publish_date }}</p>
-                        </div>
-                    </div>
-                    <img class="card--image" src="../images/test.jpg">
-                    <div class="card--bottom-side">
-                        <div class="card--text-section">
-                            <h4 class="card--text-section-title">Описание</h4>
-                            <p class="card--text-section-text">{{ elem.event_text }}</p>
-                        </div>
-                        <div class="card--buttons">
-                            <a class="card--main-button button filled" href="/apply">Подать заявку</a>
-                            <a class="card--secondary-button button text" href="/event/info">Узнать подробнее</a>
-                        </div>
-                    </div>
+    {% for elem in latest_events_list %}
+    <div class="event-grid grid">
+        <!-- Это сама карточка эвента ее можно генерировать в цикле -->
+        <div class="event-grid--item card">
+            <div class="card--top-side">
+                <h3 class="card--title">{{ elem.event_title }}</h3>
+                <div class="card--time">
+                    {% if elem.event_photo %}
+                    <img src="{{elem.event_photo}}" class="card--time-icon">
+                    {% endif%}
+                    <p class="card--time-text">{{ elem.publish_date }}</p>
                 </div>
             </div>
-        {% endfor %}
-    {% else %}
-        <div class="events-empty">
-            <img src={% static "images/events/times-icon.svg" %}   class="events-empty--icon">
-            <div class="events-empty--text">На данный момент активных событий нет :(</div>
+            <img class="card--image" src="../images/test.jpg">
+            <div class="card--bottom-side">
+                <div class="card--text-section">
+                    <h4 class="card--text-section-title">Описание</h4>
+                    <p class="card--text-section-text">{{ elem.event_text }}</p>
+                </div>
+                <div class="card--buttons">
+                    <a class="card--main-button button filled" href="/apply">Подать заявку</a>
+                    <a class="card--secondary-button button text" href="/event/info">Узнать подробнее</a>
+                </div>
+            </div>
         </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="events-empty">
+        <img src={% static "images/events/times-icon.svg" %} class="events-empty--icon">
+        <div class="events-empty--text">На данный момент активных событий нет :(</div>
+    </div>
     {% endif %}
 
 
-    
+
 </body>
+
 </html>

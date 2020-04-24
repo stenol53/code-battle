@@ -5,7 +5,11 @@ from .models import Event
 app_name = 'events'
 def events(request):
     latest_events_list = Event.objects.order_by('-publish_date')[:5]
-    return render(request, 'events.html', {'latest_events_list' : latest_events_list})
+    if request.user.is_authenticated:
+        return render(request, 'events.html', {'latest_events_list' : latest_events_list})
+    else:
+        return render(request,'account/login.html',{'message': "Авторизируйтесь, чтобы просматривать эту страницу"})
+    
 
 def event_details(request, event_id):
     try:

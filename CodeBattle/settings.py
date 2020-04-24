@@ -157,7 +157,7 @@ ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day in seconds
 ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
 # LOGIN_REDIRECT_URL = '/accounts/email/' # default to /accounts/profile 
 
-LOGIN_REDIRECT_URL = '/accounts/logout/'
+LOGIN_REDIRECT_URL = '/events/'
 
 
 
