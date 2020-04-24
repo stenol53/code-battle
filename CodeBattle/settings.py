@@ -152,8 +152,13 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, "templates","allauth","static"),
+    os.path.join(PROJECT_ROOT, "templates","static"),
 )
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT,'static')
 
-SITE_ID = 1
+
+MEMDIA_ROOT = os.path.join(PROJECT_ROOT,'media')
+MEDIA_URL = '/media/'
+
+SITE_ID = 1 

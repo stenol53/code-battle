@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/base.css" %}>
+    <link rel="stylesheet" href={% static "css/buttons.css" %}>
+    <link rel="stylesheet" href={% static "css/cards.css" %}>
+    <link rel="stylesheet" href={% static "css/events/css/events.css" %}>
+
+    <title>События</title>
 </head>
 <body>
     
 
     {% if latest_events_list%}
         {% for elem in latest_events_list %}
-
+            <div class="event-grid grid">
+                <!-- Это сама карточка эвента ее можно генерировать в цикле -->
+                <div class="event-grid--item card">
+                    <div class="card--top-side">
+                        <h3 class="card--title">{{ elem.event_title }}</h3>
+                        <div class="card--time">
+                            {% if elem.event_photo %}
+                                <img src="{{elem.event_photo}}" class="card--time-icon">
+                            {% endif%}
+                            <p class="card--time-text">{{ elem.publish_date }}</p>
+                        </div>
+                    </div>
+                    <img class="card--image" src="../images/test.jpg">
+                    <div class="card--bottom-side">
+                        <div class="card--text-section">
+                            <h4 class="card--text-section-title">Описание</h4>
+                            <p class="card--text-section-text">{{ elem.event_text }}</p>
+                        </div>
+                        <div class="card--buttons">
+                            <a class="card--main-button button filled" href="/apply">Подать заявку</a>
+                            <a class="card--secondary-button button text" href="/event/info">Узнать подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     {% else %}
-        ПУСТО
+        <div class="events-empty">
+            <img src={% static "images/events/times-icon.svg" %}   class="events-empty--icon">
+            <div class="events-empty--text">На данный момент активных событий нет :(</div>
+        </div>
     {% endif %}
 
 
