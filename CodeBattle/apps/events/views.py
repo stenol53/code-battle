@@ -17,4 +17,4 @@ def event_details(request, event_id):
     except:
         raise Http404("Ивент не найден!")
 
-    return render(request, 'event_detail.html', {'event' : event})
+    return render(request, 'event_details.html', {'event' : event})
