@@ -8,40 +8,44 @@
 
 {% block content %}
 
-<h1>{% trans "Sign in" %}</h1>
-
-{#{% get_providers as socialaccount_providers %}#}
-
-{% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
-<div class="socialaccount_ballot">
-
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
-
-</div>
-
-{% include "socialaccount/snippets/login_extra.html" %}
-
-{% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
-
-<form class="login" method="POST" action="{% url 'account_login' %}">
+<form class="auth-form form" method="POST" action="{% url 'account_login' %}">
+  <div class="form--title">Авторизация</div>
   {% csrf_token %}
-  {{ form.as_p }}
+  <label class="form--label" for="id_login">Имя пользователя:</label> 
+     <input class="form--input" type="text" name="login" placeholder="Имя пользователя" autofocus="autofocus" maxlength="150" required id="id_login">
+  <label class="form--label" for="id_password">Пароль:</label> 
+    <input class="form--input" type="password" name="password" placeholder="Пароль" required id="id_password">
+    <div class="form--check-container">
+      <input class="form--checkbox"  type="checkbox" name="remember" id="id_remember">
+      <div class="form--check-text">Запомнить меня</div>
+   </div>
+   <ul class="errorlist nonfield"></ul>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+  <button class="form--button button filled" type="submit">{% trans "Sign In" %}</button>
+
+  <div class="form--button">
+    <p>Нет аккаунта?</p>
+    <a class="primaryAction button text" href="{{ signup_url }}">Регистрация</a>
+  </div>
+  <div class="form--button">
+    <a class="button text" href="{% url 'account_reset_password' %}">Восстановить пароль</a>
+</div>
+  {% if form.errors %}
+  {% for field in form %}
+      {% for error in field.errors %}
+          <div class="alert alert-error">
+              <strong>{{ error|escape }}</strong>
+          </div>
+      {% endfor %}
+  {% endfor %}
+  {% for error in form.non_field_errors %}
+      <div class="alert alert-error">
+          <strong>{{ error|escape }}</strong>
+      </div>
+  {% endfor %}
+  {% endif %}
 </form>
 
 {% endblock %}

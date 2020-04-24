@@ -135,11 +135,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# LOGIN_REDIRECT_URL = '/battles/'
+LOGIN_REDIRECT_URL = 'accounts/logout/'
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT,'static')
 
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, "templates","allauth","static"),
+)
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT,'static')
 
 SITE_ID = 1
