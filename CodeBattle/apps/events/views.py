@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, redirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse, JsonResponse
+import json
 from .models import Event
 
 app_name = 'events'
@@ -18,3 +19,61 @@ def event_details(request, event_id):
         raise Http404("Ивент не найден!")
 
     return render(request, 'event_details.html', {'event' : event})
+
+def accept_event(request):
+    if request.method == "POST": 
+        accept_list = request.user.getAcceptedEvents()
+
+        print(accept_list)
+        if len(accept_list) != 0:
+            item_exists = next((item for item in accept_list if item != "" and int(item) == request.POST.get('event_id')),False)
+            if not item_exists:
+                request.user.addEvent(request.POST.get('event_id'))
+                request.session.modified = True
+        
+
+    if request.is_ajax():
+        data = {
+            'event_id': request.POST.get('event_id')
+        }
+        request.session.modified = True
+        return JsonResponse(data)
+
+    return redirect(request.POST.get('url_from'))
+
+
+        
+def deny_event(request):
+    if request.method == "POST":
+        request.user.removeEvent(request.POST.get('event_id'))
+        request.session.modified = True 
+    if request.is_ajax():
+        data = {
+            'event_id': request.POST.get('event_id')
+        }
+        request.session.modified = True
+        return JsonResponse(data)
+
+    return redirect(request.POST.get('url_from'))
+
+
+
+def get_events_api(request):
+    # return JsonResponse(request.session.get('event_list'),safe = False)
+    lst = request.user.getAcceptedEvents()
+    jsn = list()
+    for elem in lst:
+        if elem:
+            i = int(elem)
+            data = {
+                'event_id': i
+            }
+            jsn.append(data)
+        
+
+    return JsonResponse(jsn,safe=False)
+    # return HttpResponse(request, data, content_type='applocation/json')
+# def event_accept(request):
+#     if 'elem_id' in request.POST:
+#         elem_id = request.POST['elem_id']
+    
