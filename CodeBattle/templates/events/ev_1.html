@@ -5,10 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/components/buttons.css" />
-    <link rel="stylesheet" href="../css/components/cards.css" />
-    <link rel="stylesheet" href="../css/pages/events.css" />
+    <link rel="stylesheet" href="../static/css/base.css" />
+    <link rel="stylesheet" href="../static/css/buttons.css" />
+    <link rel="stylesheet" href="../static/css/cards.css" />
+    <link rel="stylesheet" href="../static/css/events/css/events.css" />
     <title>Document</title>
 </head>
 
@@ -33,7 +33,7 @@
                         <p class="card--time-text">24 Апреля Вт 12:00</p>
                     </div>
                 </div>
-                <img class="card--image" src="../images/test.jpg">
+                <img class="card--image" src="../static/images/events/clock-icon.svg">
                 <div class="card--bottom-side">
                     <div class="card--text-section">
                         <h4 class="card--text-section-title">Описание</h4>
@@ -41,8 +41,8 @@
                             жизнь. Встретившись лицом к лицу со своим обидчиком...</p>
                     </div>
                     <div class="card--buttons">
-                        <a class="card--main-button button filled" href="/apply">Подать заявку</a>
-                        <a class="card--secondary-button button text" href="/event/info">Узнать подробнее</a>
+                        <a class="event-grid--apply card--main-button button filled">Подать заявку</a>
+                        <a class="event-grid--info card--secondary-button button text">Узнать подробнее</a>
                     </div>
                 </div>
             </div>
@@ -50,10 +50,10 @@
 
         <!-- Блок если эвентов нет -->
 
-        <div class="events-empty">
-            <img src="../images/times-icon.svg" class="events-empty--icon">
+        <!-- <div class="events-empty">
+            <img src="../static/images/events/times-icon.svg" class="events-empty--icon">
             <div class="events-empty--text">На данный момент активных событий нет :(</div>
-        </div>
+        </div> -->
 
     </main>
 </body>

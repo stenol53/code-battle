@@ -31,3 +31,12 @@
 .events-empty--text {
     font-size: 3rem;
 }
+
+.event-grid--apply,
+.event-grid--info {
+    width: 35%;
+}
+
+.accepted {
+    background-color: #C4C4C4;
+}
