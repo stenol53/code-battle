@@ -1,0 +1,20 @@
+.button {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.filled {
+    background-color: #F04E4B;
+}
+
+.text {
+    font-size: 0.9rem;
+    background: none;
+    color: #F04E4B;
+    font-weight: 500;
+}

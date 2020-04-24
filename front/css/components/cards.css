@@ -1,0 +1,68 @@
+.card {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Top */
+
+.card--top-side {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card--title {}
+
+.card--time {
+    display: flex;
+    align-items: center;
+}
+
+.card--time-icon {
+    height: 1.2rem;
+    margin: 0 5px;
+}
+
+.card--time-text {
+    color: #F04E4B;
+}
+
+
+/* Middle */
+
+.card--image-container {
+    width: 100%;
+}
+
+.card--image {
+    width: 100%;
+    height: 50%;
+}
+
+
+/* Bottom */
+
+.card--bottom-side {
+    padding: 0 20px 0;
+}
+
+.card--text-section {
+    margin-bottom: 30px;
+}
+
+.card--text-section-title {}
+
+.card--text-section-text {}
+
+.card--buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card--main-button,
+.card--secondary-button {
+    text-align: center;
+}

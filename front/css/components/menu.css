@@ -1,0 +1,15 @@
+.menu {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu--element {
+    width: 100%;
+    text-align: center;
+}
+
+.menu--icon {}
+
+.menu--text {}
