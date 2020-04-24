@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'events.apps.EventsConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
     'Battles.apps.BattlesConfig',
@@ -68,6 +69,7 @@ TEMPLATES = [
             os.path.join(PROJECT_ROOT,'templates'),
             os.path.join(PROJECT_ROOT,'templates','allauth'),
             os.path.join(PROJECT_ROOT,'templates','core'),
+            os.path.join(PROJECT_ROOT,'templates','events'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
