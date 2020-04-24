@@ -1,0 +1,18 @@
+.button {
+	padding: 10px;
+	border: none;
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.filled {
+	background-color: #347df3;
+}
+
+.text {
+	font-size: 0.9rem;
+	background: none;
+	color: #347df3;
+	font-weight: 500;
+}
