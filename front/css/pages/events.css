@@ -1,0 +1,33 @@
+.main-container {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.event-grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.event-grid--item {
+    height: 600px;
+    margin: 20px;
+    flex-basis: 31%;
+}
+
+.events-empty {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    color: #C6C6C6;
+}
+
+.events-empty--icon {
+    margin: 0 20px;
+    height: 3rem;
+}
+
+.events-empty--text {
+    font-size: 3rem;
+}
