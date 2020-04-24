@@ -42,6 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=254, null=False, blank=True, default="Empty")
     sirname = models.CharField(max_length=254,null=False, blank=True,default="Empty")
     phone = models.CharField(max_length=15,null=False, blank=True,default="Empty")
+    event_list = models.TextField(verbose_name="Список ID битв", null=True, unique=False)
 
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -55,6 +56,39 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['name','sirname','phone']
 
     objects = UserManager()
+
+    def getAcceptedEvents(self):
+      return str(self.event_list).split(",")
+
+    def removeEvent(self,id):
+      if self.is_accepted_event(id):
+        # lst = self.serializable_value(self.event_list).split(",")
+        lst = str(self.event_list).split(",")
+        lst.remove(str(id))
+        self.event_list = ",".join(lst)
+        self.save()
+        return True
+      return False    
+      
+
+    def addEvent(self,id):
+      if not self.is_accepted_event(id):
+        # lst = self.serializable_value(self.event_list).split(",")
+        lst = str(self.event_list).split(",")
+        lst.append(str(id))
+        self.event_list = ",".join(lst)
+        self.save()
+        return True
+      return False
+
+    def is_accepted_event(self,id):
+      # lst = self.serializable_value(self.event_list).split(",")
+      lst = str(self.event_list).split(",")
+      for elem in lst:
+        if str(id) == elem:
+          return True
+      return False
+
 
     def get_absolute_url(self):
         return "/users/%i/" % (self.pk)

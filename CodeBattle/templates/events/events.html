@@ -71,7 +71,8 @@
                             <p class="card--text-section-text">{{ elem.event_text }}</p>
                         </div>
                         <div class="card--buttons">
-                            <a class="card--main-button button filled" href="/apply">Подать заявку</a>
+                            <a class="card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
+                                         
                             <a class="card--secondary-button button text" href="/event/info">Узнать подробнее</a>
                         </div>
                     </div>
@@ -88,6 +89,8 @@
     {% endif %}
 
 
+<script src={% static 'js/jquery-3.5.0.min.js' %} ></script>
+<script src={% static 'js/events/script.js' %} ></script>
 
 </body>
 
