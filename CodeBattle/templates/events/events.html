@@ -49,28 +49,32 @@
 
 
     {% if latest_events_list%}
-    {% for elem in latest_events_list %}
-    <div class="event-grid grid">
-        <!-- Это сама карточка эвента ее можно генерировать в цикле -->
-        <div class="event-grid--item card">
-            <div class="card--top-side">
-                <h3 class="card--title">{{ elem.event_title }}</h3>
-                <div class="card--time">
+        {% for elem in latest_events_list %}
+            <div class="event-grid grid">
+                <!-- Это сама карточка эвента ее можно генерировать в цикле -->
+                <div class="event-grid--item card">
+                    <div class="card--top-side">
+                        <h3 class="card--title">{{ elem.event_title }}</h3>
+                        <div class="card--time">
+                            
+                                <img src={% static "images/events/clock-icon.svg" %} class="card--time-icon">
+                            
+                            <p class="card--time-text">{{ elem.publish_date }}</p>
+                        </div>
+                    </div>
                     {% if elem.event_photo %}
-                    <img src="{{elem.event_photo}}" class="card--time-icon">
-                    {% endif%}
-                    <p class="card--time-text">{{ elem.publish_date }}</p>
-                </div>
-            </div>
-            <img class="card--image" src="../images/test.jpg">
-            <div class="card--bottom-side">
-                <div class="card--text-section">
-                    <h4 class="card--text-section-title">Описание</h4>
-                    <p class="card--text-section-text">{{ elem.event_text }}</p>
-                </div>
-                <div class="card--buttons">
-                    <a class="card--main-button button filled" href="/apply">Подать заявку</a>
-                    <a class="card--secondary-button button text" href="/event/info">Узнать подробнее</a>
+                        <img class="card--image" src="{{ elem.event_photo.url }}">
+                    {% endif%}      
+                    <div class="card--bottom-side">
+                        <div class="card--text-section">
+                            <h4 class="card--text-section-title">Описание</h4>
+                            <p class="card--text-section-text">{{ elem.event_text }}</p>
+                        </div>
+                        <div class="card--buttons">
+                            <a class="card--main-button button filled" href="/apply">Подать заявку</a>
+                            <a class="card--secondary-button button text" href="/event/info">Узнать подробнее</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
