@@ -24,13 +24,15 @@
                     <div class="card--top-side">
                         <h3 class="card--title">{{ elem.event_title }}</h3>
                         <div class="card--time">
-                            {% if elem.event_photo %}
-                                <img src="{{elem.event_photo}}" class="card--time-icon">
-                            {% endif%}
+                            
+                                <img src={% static "images/events/clock-icon.svg" %} class="card--time-icon">
+                            
                             <p class="card--time-text">{{ elem.publish_date }}</p>
                         </div>
                     </div>
-                    <img class="card--image" src="../images/test.jpg">
+                    {% if elem.event_photo %}
+                        <img class="card--image" src="{{ elem.event_photo.url }}">
+                    {% endif%}      
                     <div class="card--bottom-side">
                         <div class="card--text-section">
                             <h4 class="card--text-section-title">Описание</h4>
