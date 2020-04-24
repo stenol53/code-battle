@@ -8,12 +8,23 @@
 <form class="auth-form form" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
   <div class="form--title">Регистрация</div>
-  <label class="form--label" for="id_email">E-mail (опционально):</label> 
+  <label class="form--label" for="id_name">Имя:</label> 
+  <input class="form--input" type="text" name="name" placeholder="Имя" required
+      id="id_name"> 
+
+  <label class="form--label" for="id_sirname">Фамилия:</label> 
+  <input class="form--input" type="text" name="sirname" placeholder="Фамилия" required
+      id="id_sirname"> 
+
+  <label class="form--label" for="id_phone">Телефон:</label> 
+  <input class="form--input" type="text" name="phone" placeholder="Телефон" required
+      id="id_phone"> 
+
+  <label class="form--label" for="id_email">E-mail:</label> 
   <input class="form--input" type="email" name="email" placeholder="E-mail адрес" id="id_email">
 
-  <label class="form--label" for="id_username">Имя пользователя:</label> 
-  <input type="text" name="username" class="form--input" placeholder="Имя пользователя" autofocus="autofocus" minlength="1" maxlength="150" required id="id_username">
-
+  <!-- <label class="form--label" for="id_username">Имя пользователя:</label> 
+  <input type="text" name="username" class="form--input" placeholder="Имя пользователя" autofocus="autofocus" minlength="1" maxlength="150" id="id_username"> -->
   <label class="form--label" for="id_password1">Пароль:</label> <input class="form--input" type="password" name="password1" placeholder="Пароль" required
       id="id_password1"> 
   <label class="form--label" for="id_password2">Пароль (ещё раз):</label> <input class="form--input" type="password" name="password2"
