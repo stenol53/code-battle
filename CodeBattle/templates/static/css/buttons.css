@@ -6,6 +6,7 @@
     font-size: 0.9rem;
     font-weight: 400;
     cursor: pointer;
+    transition: background background-color 0.3s ease;
 }
 
 .filled {
