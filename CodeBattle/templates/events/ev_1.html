@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components/buttons.css" />
+    <link rel="stylesheet" href="../css/components/cards.css" />
+    <link rel="stylesheet" href="../css/pages/events.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Для всех страниц общий хедер -->
+    <header>
+        <div class="header"></div>
+    </header>
+
+    <!-- Главная секция-контейнер на весь экран -->
+    <main class="main-container">
+
+        <!-- Ниже находятся контент страниц -->
+        <!-- Страница эвентов -->
+        <div class="event-grid grid">
+            <!-- Это сама карточка эвента ее можно генерировать в цикле -->
+            <div class="event-grid--item card">
+                <div class="card--top-side">
+                    <h3 class="card--title">Название эвента</h3>
+                    <div class="card--time">
+                        <img src="../images/clock-icon.svg" class="card--time-icon">
+                        <p class="card--time-text">24 Апреля Вт 12:00</p>
+                    </div>
+                </div>
+                <img class="card--image" src="../images/test.jpg">
+                <div class="card--bottom-side">
+                    <div class="card--text-section">
+                        <h4 class="card--text-section-title">Описание</h4>
+                        <p class="card--text-section-text">27-летний Илья Горюнов семь лет отсидел в тюрьме по ложному обвинению в распространении наркотиков. Теперь он выходит на свободу движимый лишь одним желанием — отомстить тому мажору Петру, который подбросил ему наркотики и поломал
+                            жизнь. Встретившись лицом к лицу со своим обидчиком...</p>
+                    </div>
+                    <div class="card--buttons">
+                        <a class="card--main-button button filled" href="/apply">Подать заявку</a>
+                        <a class="card--secondary-button button text" href="/event/info">Узнать подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Блок если эвентов нет -->
+
+        <div class="events-empty">
+            <img src="../images/times-icon.svg" class="events-empty--icon">
+            <div class="events-empty--text">На данный момент активных событий нет :(</div>
+        </div>
+
+    </main>
+</body>
+
+</html>
