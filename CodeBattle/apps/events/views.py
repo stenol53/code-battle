@@ -22,28 +22,16 @@ def event_details(request, event_id):
 
 
 def accept_event(request):
-    if request.method == "POST":
-        # if not request.session.get('event_list'):
-        #     request.session['event_list'] = list()
-        # else:
-        #     request.session['event_list'] = list(request.session['event_list'])
-        
+    if request.method == "POST": 
         accept_list = request.user.getAcceptedEvents()
 
-        item_exists = next((item for item in accept_list if int(item) == request.POST.get('event_id')),False)
-
-        # item_exists = next((item for item in request.session['event_list'] if item['event_id'] == request.POST.get('event_id')),False)
-
-        # add_data = {
-        #     'event_id': request.POST.get('event_id')
-        # }
-
-
-        if not item_exists:
-            request.user.addEvent(request.POST.get('event_id'))
-            # request.session['event_list'].append(add_data)
-            request.session.modified = True
-
+        print(accept_list)
+        if len(accept_list) != 0:
+            item_exists = next((item for item in accept_list if item != "" and int(item) == request.POST.get('event_id')),False)
+            if not item_exists:
+                request.user.addEvent(request.POST.get('event_id'))
+                request.session.modified = True
+        
 
     if request.is_ajax():
         data = {
@@ -58,35 +46,8 @@ def accept_event(request):
         
 def deny_event(request):
     if request.method == "POST":
-        
-        # lst = request.user.getAcceptedEvents()
-
-        # print(lst)
-        # lst.remove(str(request.POST.get('event_id')))
-        # print(lst)
-        # request.user.event_list = ",".join(lst)
-        # request.user.save()
-        # print(request.user.event_list)
-        
-        # ev.        lst = str(self.event_list).split(",")
-        # lst.remove(id)
-        # self.event_list = "123"
-        
         request.user.removeEvent(request.POST.get('event_id'))
-
-        # for item in request.session['event_list']:
-        #     if item['event_id'] == request.POST.get('event_id'):
-        #         item.clear()
-
-        
-        # while {} in request.session['event_list']:
-        #     request.session['event_list'].remove({})
-
-        # if not request.session['event_list']:
-        #     del request.session['event_list']
-
-        request.session.modified = True
-        
+        request.session.modified = True 
     if request.is_ajax():
         data = {
             'event_id': request.POST.get('event_id')
@@ -103,12 +64,13 @@ def get_events_api(request):
     lst = request.user.getAcceptedEvents()
     jsn = list()
     for elem in lst:
-        i = int(elem)
-        data = {
-            'event_id': i
-        }
-        jsn.append(data)
-    
+        if elem:
+            i = int(elem)
+            data = {
+                'event_id': i
+            }
+            jsn.append(data)
+        
 
     return JsonResponse(jsn,safe=False)
     # return HttpResponse(request, data, content_type='applocation/json')
