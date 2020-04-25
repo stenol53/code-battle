@@ -5,20 +5,21 @@
 .landing-container {
     margin: 0 auto;
     width: 1200px;
-    height: 100vh;
+    min-height: 86vh;
     padding: 5% 0;
     user-select: none;
 }
 
 .bottom-container {
-    /* position: relative; */
-    height: 80%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+
+    margin-bottom: 20px;
 }
 
 .landing-image {
-    /* position: absolute; */
-    /* left: 0;
-    bottom: 0; */
     height: 40vh;
 }
 
@@ -27,6 +28,7 @@
     margin: 20px;
     justify-content: flex-start;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .landing--text {
@@ -45,7 +47,7 @@
 }
 
 .secondary-title-container {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: flex-end;
 }
@@ -57,33 +59,35 @@
 
 .icon--logo {
     height: 250px;
-    background-color: red;
+    background-color: #F04E4B;
     padding: 10px;
 }
 
 .secondary-block {
-    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 5%;
-    border: 3px solid black;
     border-radius: 10px;
-    /* background-color: white; */
-    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+    background-color: rgba(50, 50, 50, 0.6);;
+    color: #fff;
 }
 
 .secondary-title {
     width: 100%;
     font-size: 2.3rem;
+    color: #fff;
 }
 
 .secondary-text {
     font-size: 1.2rem;
     margin-bottom: 50px;
+    color: #fff;
 }
 
 .secondary-button {
     font-size: 1.5rem;
     padding: 1rem 3rem;
+    width: 100%;
+    text-align: center;
 }
