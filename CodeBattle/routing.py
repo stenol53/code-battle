@@ -3,7 +3,7 @@ from django.conf.urls import url
 from channels.auth import AuthMiddlewareStack
 from channels.security.websocket import AllowedHostsOriginValidator, OriginValidator
 
-# from CodeBattle.apps.Battles.consumers import BattleConsumer
+from Battles.consumers import BattleConsumer
 
 application = ProtocolTypeRouter({
     # Empty for now (http->django views is added by default)
@@ -11,7 +11,9 @@ application = ProtocolTypeRouter({
         AuthMiddlewareStack (
             URLRouter (
                  [
-                    #  url(r"^battle/(?P<battle_id>\w)/$", BattleConsumer),
+                     url(r"^battles/(?P<battle_id>\w)/$", BattleConsumer),
+                    #  url("/battles/<int:id>/",BattleConsumer),
+                    #  url(r'^ws/$', BattleConsumer),
                  ]
             )
         )

@@ -41,7 +41,7 @@
     <div class="event-grid grid">
     {% for elem in latest_events_list %}
         <!-- Это сама карточка эвента ее можно генерировать в цикле -->
-        <div class="event-grid--item card">
+        <div class="event-grid--item card" data-id="{{ elem.id }}">
             <div class="card--top-side">
                 <h3 class="card--title">{{ elem.event_title }}</h3>
                 <div class="card--time">
