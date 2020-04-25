@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySite</title>
+
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/base.css" %}>
+    <link rel="stylesheet" href={% static "css/buttons.css" %}>
+    <link rel="stylesheet" href={% static "css/core/css/landing.css" %} />
+    <title>Битва кодеров от Альфа-Банк</title>
 </head>
-<body>
-    <h1>Получилось</h1>
-    <form action="accounts/login">
-    <input type="submit" value="Авторизироваться">
-    </form>
+
+<body class="land-body">
+    <div class="landing-container">
+
+        <!--  -->
+        <h1 class="big-title">СРАЗИСЬ С ДРУГИМИ КОДЕРАМИ И<br>ПОЛУЧИ РАБОТУ В АЛЬФА-БАНК</h1>
+
+        <div class="bottom-container">
+            <!--  -->
+            <div class="secondary-title-container">
+                <div class="secondary-block">
+                    <h2 class="secondary-title">ДОКАЖИ ЧТО ТЫ<br> ЦАРЬ ГОРЫ</h2>
+                    <p class="secondary-text">Зарегистрируйся и участвуй в эпичных кодерских сражениях...Нужно придумать что-то та и вообще текста поменять</p>
+                    <a class="secondary-button button filled" href="{% url 'account_login' %}">Прими участие</a>
+                </div>
+            </div>
+
+            <img class="landing-image" src={% static "images/core/prog_battle.svg" %}>
+        </div>
+
+    </div>
 </body>
+
 </html>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href={% static "css/cards.css" %}>
     <link rel="stylesheet" href={% static "css/events/css/events.css" %}>
 
-    <title>События</title>
+    <title>Битва кодеров от Альфа-Банк</title>
 </head>
 
 <body>
@@ -56,8 +56,6 @@
                 <div class="card--text-section">
                     <h4 class="card--text-section-title">Описание</h4>
                     <p class="card--text-section-text">{{ elem.get_text_preview }}</p>
-                    <h4 class="competitors-cout">Количество участников: {{ elem.get_users_count }}</h4>
-                    <h4>Статус: <span class="status">{{ elem.event_status }}</span></h4>
                 </div>
                 <div class="card--buttons">
                     <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
