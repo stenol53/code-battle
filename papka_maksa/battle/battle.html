@@ -1,30 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../../CodeBattle/templates/static/css/base.css" />
-		<link rel="stylesheet" href="../../CodeBattle/templates/static/css/buttons.css" />
-		<link rel="stylesheet" href="loader.css" />
-		<link rel="stylesheet" href="battle.css" />
-		<title>Document</title>
-	</head>
-	<body>
-		<div class="timer">
-			<div class="time">0:00</div>
-		</div>
 
-		<!-- Контейнер -->
-		<div class="battle-container">
-			<!-- Блок со зрителями -->
-			<div class="watchers"></div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../CodeBattle/templates/static/css/base.css" />
+    <link rel="stylesheet" href="../../CodeBattle/templates/static/css/buttons.css" />
+    <link rel="stylesheet" href="battle.css" />
+    <title>Document</title>
+</head>
 
-			<!-- Главный блок -->
-			<div class="tasks"></div>
+<body>
 
-			<!-- Пустой блок -->
-		</div>
 
-		<script src="timer.js"></script>
-	</body>
+    <!-- Контейнер -->
+    <div class="battle-container">
+        <!-- Блок со зрителями -->
+        <div class="watchers">
+            <!-- Типо иконка зрителя -->
+            <div class="watcher">
+                <img src="../../CodeBattle/templates/static/images/events/clock-icon.svg" class="watcher-avatar">
+            </div>
+        </div>
+
+        <!-- Главный блок -->
+        <div class="tasks">
+            <div class="timer">
+                <div class="time">0:00</div>
+            </div>
+
+            <!-- Задача с раиобаттонами -->
+            <div class="task--radiobutton task">
+                <h3 class="task--title">Задание 3</h3>
+                <div class="task--text">
+                    Условие: Вруниш (всегда говорит неправду) и Правдиш (всегда говорит правду) решили взять для внука одного кота. Правдиш: Рыжего брать не будем. Вруниш: Возьмём белого. Задание: Определи, кого же они выбрали.
+                </div>
+                <form action="" class="task--answers">
+
+                    <div class="answers-grid">
+                        <div class="answers-grid-item">
+                            <input name="answer" class="task--answer" type="radio" value="1">
+                            <span class="task--answer-label">Answer1thrgfhf</span>
+                        </div>
+                        <div class="answers-grid-item">
+                            <input name="answer" class="task--answer" type="radio" value="2">
+                            <span class="task--answer-label">Answer2sdflksdjlkfjlskdjflksd</span>
+                        </div>
+
+                        <div class="answers-grid-item">
+                            <input name="answer" class="task--answer" type="radio" value="3">
+                            <span class="task--answer-label">Answer3sdflsdkjlfsd</span>
+                        </div>
+                        <div class="answers-grid-item">
+                            <input name="answer" class="task--answer" type="radio" value="4">
+                            <span class="task--answer-label">Answer4sdfAnswer3sdflsdkjlfsdAnswer3sdflsdkjlfsdAnswer4sdfAnswer3sdflsdkjlfsdAnswer3sdflsdkjlfsd</span>
+                        </div>
+
+                    </div>
+
+                    <button class="task-answers-submit button filled">Submit</button>
+                </form>
+            </div>
+
+            <!-- Задача с текстовым ответом -->
+
+        </div>
+
+        <!-- Пустой блок -->
+    </div>
+
+    <!-- <script src="timer.js"></script> -->
+</body>
+
 </html>

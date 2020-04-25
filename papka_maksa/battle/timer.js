@@ -5,18 +5,18 @@ let START_MIN = 5;
 let START_SEC = 0;
 
 let interval = setInterval(() => {
-	if (START_SEC == -1) {
-		START_SEC = 59;
-		START_MIN--;
-	} else {
-		START_SEC--;
-	}
+    if (START_SEC == 0) {
+        START_SEC = 59;
+        START_MIN--;
+    } else {
+        START_SEC--;
+    }
 
-	timer.textContent = `${START_MIN}:${START_SEC > 9 ? START_SEC : '0' + START_SEC}`;
+    timer.textContent = `${START_MIN}:${START_SEC > 9 ? START_SEC : '0' + START_SEC}`;
 
-	if (START_MIN == 0 && START_SEC == -1) {
-		clearInterval(interval);
-		timer.style.color = 'red';
-		timerBorder.style.borderColor = 'red';
-	}
+    if (START_MIN == 0 && START_SEC == 0) {
+        clearInterval(interval);
+        timer.style.color = 'red';
+        timerBorder.style.borderColor = 'red';
+    }
 }, 1000);
