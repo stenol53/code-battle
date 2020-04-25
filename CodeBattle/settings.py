@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'allauth',
     'allauth.account',
+    'channels',
 ]
 
 
@@ -90,6 +91,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 WSGI_APPLICATION = 'CodeBattle.wsgi.application'
+ASGI_APPLICATION = 'CodeBattle.routing.application'
 
 
 # Database
