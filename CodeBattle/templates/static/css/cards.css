@@ -7,7 +7,7 @@
 /* Top */
 
 .card--top-side {
-    padding: 0 20px;
+    padding: 0 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,7 +65,7 @@
 /* Bottom */
 
 .card--bottom-side {
-    padding: 0 20px 0;
+    padding: 0 6% 0;
 }
 
 .card--text-section {
