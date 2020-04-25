@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    
+    'Battles.apps.BattlesConfig',
     'events.apps.EventsConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',    
@@ -48,9 +48,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'channels',
-    'Battles.apps.BattlesConfig',
 ]
-
+    
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
