@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" /> {% load static %}
     <link rel="stylesheet" href={% static "css/base.css" %}>
     <link rel="stylesheet" href={% static "css/buttons.css" %}>
+    <link rel="stylesheet" href={% static "css/header.css" %}>
     <link rel="stylesheet" href={% static "css/cards.css" %}>
     <link rel="stylesheet" href={% static "css/events/css/events.css" %}>
 
@@ -17,7 +18,32 @@
 
 <body>
 
-    <div style="display: flex; justify-content: center; text-align: center;">
+    <!-- Для всех страниц общий хедер -->
+    <header class="header">
+        <a class="profile-container" href="#">
+            <img class="profile-image" src={% static "images/events/ava.png" %}>
+            <!-- Если это админ -->
+            <div class="profile-user">
+                <span class="profile-name">{{ user.name }} {{ user.sirname }}</span>
+                <!-- Если это админ, если нет - не отображать -->
+                {% if user.is_staff %}
+                <span class="profile-admin">Admin</span> {% endif %}
+            </div>
+        </a>
+
+        {% if user.is_staff %}
+        <a class="admin-panel-button button filled" href="/admin">Перейти в админ-панель</a> {% endif %}
+
+        <form class="form--logout" method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %} {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
+            <button class="profile-logout button filled" type="submit">Выход</button>
+        </form>
+        <!-- <button class="profile-logout button filled">Выйти</button> -->
+    </header>
+
+
+    <!-- <div style="display: flex; justify-content: center; text-align: center;">
         <h1>Вы вошли как {{ user.name }} {{ user.sirname }} {% if user.is_staff %} (админ) {% endif %}
         </h1>
 
@@ -35,7 +61,7 @@
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
             <button type="submit">Выход</button>
         </form>
-    </div>
+    </div> -->
 
 
     <!-- Modal window -->
@@ -95,7 +121,7 @@
                 <img class="card--image" src="{{ elem.event_photo.url }}">
             </figure>
             {% endif %}
-            <div class="card--bottom-side">
+            <div class="card--bottom-side event-grid--bottom-side">
                 <div class="card--text-section">
                     <h4 class="card--text-section-title">Описание</h4>
                     <p class="card--text-section-text">{{ elem.get_text_preview }}</p>
@@ -103,14 +129,12 @@
                 <div class="card--buttons">
                     <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
                     <a class="card--secondary-button button text" data-id="{{ elem.id }}" href="{% url 'event_details' %}">Узнать подробнее</a>
-
-
-
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+
     {% else %}
     <div class="events-empty">
         <img src={% static "images/events/times-icon.svg" %} class="events-empty--icon">

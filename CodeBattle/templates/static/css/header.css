@@ -8,11 +8,13 @@
 .profile-container {
     height: 100%;
     display: flex;
+    margin-right: 20px;
 }
 
 .profile-image {
     height: 100%;
     margin-right: 10px;
+    border-radius: 150px;
 }
 
 .profile-user {
@@ -33,9 +35,21 @@
 
 .profile-logout {
     /* font-size: 0.4rem; */
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 10px;
     margin: 0 20px;
+}
+
+.form--logout {
+    height: 100%;
+}
+
+.admin-panel-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

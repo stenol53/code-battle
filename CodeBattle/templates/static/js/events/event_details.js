@@ -47,6 +47,20 @@ function accept_event() {
             $.get("/events/event_details/", { event_id: id })
                 .done(function(data) {
                     // ПИШИ КОД ТУТ
+                    const months = {
+                        '01': 'Января',
+                        '02': 'Февраля',
+                        '03': 'Марта',
+                        '04': 'Апреля',
+                        '05': 'Мая',
+                        '06': 'Июня',
+                        '07': 'Июля',
+                        '08': 'Августа',
+                        '09': 'Сентября',
+                        '10': 'Октября',
+                        '11': 'Ноября',
+                        '12': 'Декабря',
+                    };
 
                     console.log(data);
 
@@ -57,7 +71,12 @@ function accept_event() {
                         document.querySelector('.modal--image').src = data.photo;
                     }
                     document.querySelector('.card--title').textContent = data.title;
-                    document.querySelector('.card--time-text').textContent = data.date;
+
+                    let [date, time] = data.date.split('T');
+                    let [year, month, day] = date.split('-');
+                    time = time.slice(0, time.length - 1);
+
+                    document.querySelector('.card--time-text').textContent = `${day} ${months[month]} ${year} ${time}`;
                     document.querySelector('.card--text-section-text').textContent = data.text;
                     document.querySelector('.modal--status').textContent = data.status;
                     document.querySelector('.modal--count').textContent = data.users_count;
