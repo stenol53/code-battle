@@ -45,3 +45,7 @@ class Event(models.Model):
             if str(id) == elem:
                 return True
         return False
+
+    def __str__(self):
+        return self.event_title
+    

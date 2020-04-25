@@ -54,9 +54,9 @@ class Battle(models.Model):
     TimeStart = models.DateTimeField(("Время завершения битвы"), auto_now=False, auto_now_add=False)
     timestamp    = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        # return self.event.event_title
-        return "123"
+    # def __str__(self):
+    #     return self.event
+        # return str(self.TimeStart)
     # def is_active(self):
     #     if timezone.now > self.TimeEnd :
     #         return False

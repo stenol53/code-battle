@@ -9,15 +9,22 @@ from .models import Battle,Contact,Pair,Task,AnswerVariant
 class BattleConsumer(AsyncConsumer):
     async def websocket_connect(self,event):
         print ('connected', event)
+
+        await self.send({
+            "type": "websocket.accept"
+        })
+
         battle_id = self.scope['url_route']['kwargs']['battle_id']
         me = self.scope['user']
         print(battle_id, me)
         battle = await self.get_battle(battle_id)
         print(battle)
-        
+
         await self.send({
-            "type": "websocket.accept"
+            "type": "websocket.send",
+            "text": await self.get_event_caption(battle)
         })
+        
         
     
     async def websocket_receive(self,event):
@@ -29,3 +36,7 @@ class BattleConsumer(AsyncConsumer):
     @database_sync_to_async
     def get_battle(self, battle_id):
         return Battle.objects.get(pk=battle_id)
+
+    @database_sync_to_async
+    def get_event_caption(self, battle):
+        return battle.event.event_title
