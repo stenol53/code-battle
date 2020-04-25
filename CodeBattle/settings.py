@@ -34,10 +34,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    
     'events.apps.EventsConfig',
     'users.apps.UsersConfig',
-    'core.apps.CoreConfig',
-    'Battles.apps.BattlesConfig',
+    'core.apps.CoreConfig',    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'allauth',
     'allauth.account',
-    # 'channels',
+    'channels',
+    'Battles.apps.BattlesConfig',
 ]
 
 
@@ -161,9 +162,6 @@ ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
 # LOGIN_REDIRECT_URL = '/accounts/email/' # default to /accounts/profile 
 
 LOGIN_REDIRECT_URL = '/events/'
-
-
-
 
 STATIC_URL = '/static/'
 

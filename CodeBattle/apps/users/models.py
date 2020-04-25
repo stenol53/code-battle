@@ -42,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=254, null=False, blank=True, default="Empty")
     sirname = models.CharField(max_length=254,null=False, blank=True,default="Empty")
     phone = models.CharField(max_length=15,null=False, blank=True,default="Empty")
-    event_list = models.TextField(verbose_name="Список ID битв", null=True, unique=False)
+    event_list = models.TextField(verbose_name="Список ID битв", default="")
 
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

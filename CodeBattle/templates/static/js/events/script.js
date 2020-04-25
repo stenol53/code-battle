@@ -31,11 +31,29 @@ $.ajaxSetup({
 });
 ///////////////////////////////////////////////
 
+function onEventClick(e){
+    id = $(e).data('id');
+    // if($(e).hasClass('event-grid--item'))
+        window.location.href = "/battle/"+id;
+}
+
+function set_event_click(){
+    $('.event-grid--item').each(function (index,el) {
+
+        $(el).css('cursor', 'pointer');
+
+        $(el).click(function (e) { 
+            e.preventDefault();
+            
+            let id = $(el).data('id');
+            window.location.href = "/battles/"+id;
+           })
+        // el.addEventListener("click",onEventClick);
+    })
+}
 
 function accept_event() {
-    console.log(111);
     $('.card--main-button').each(function (index, el) { 
-        console.log(333);
          $(el).click(function (e) { 
              e.preventDefault();
              
@@ -92,8 +110,8 @@ function check_state() {
     })
 }
 
-
 $(document).ready(function () {
     accept_event();
     check_state();
+    set_event_click();
 });

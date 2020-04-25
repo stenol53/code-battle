@@ -1,19 +1,25 @@
 from django.db import models
-from django.utils import timezone
+# from django.utils import timezone
 from django.conf import settings
 from django.db.models import Q
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+class BattleManager(models.Manager):
+    def by_id(self, id):
+        qlookup = Q(id=id)
+        qs = self.get_queryset().filter(qlookup).distinct()
+        return qs
 
-class Contact(models.Model):
-    user = models.ForeignKey(User, verbose_name=("Друзья"),related_name=("friends"), on_delete=models.CASCADE)
-
-    # friends = models.ManyToManyField("self", blank=True)
-
-    def __str__(self):
-        return self.user.username
+    def get_data(self, id):
+        qlookup = Q(id = id)
+        qs = self.get_queryset().filter(qlookup).distinct()
+        if qs.count() == 1:
+            return qs.first(), False
+        elif qs.count() > 1:
+            return qs.order_by('timestamp').first(), False
+        else: return None, False
 
 class AnswerVariant(models.Model):
     text = models.TextField(("Текст ответа"))
@@ -31,6 +37,12 @@ class Pair(models.Model):
     def __str__(self):
         return self.user1.username + " VS " + self.user2.username
 
+class Contact(models.Model):
+    user = models.ForeignKey(User, verbose_name=("Друзья"),related_name=("friends"), on_delete=models.CASCADE)
+    friends = models.ManyToManyField("self", blank=True)
+
+    def __str__(self):
+        return self.user.username
 
 class Battle(models.Model):
     event = models.ForeignKey("events.Event", verbose_name=("Событие"), on_delete=models.CASCADE)
@@ -40,46 +52,18 @@ class Battle(models.Model):
     winner = models.ForeignKey(User, verbose_name=("Победитель"), on_delete=models.CASCADE)
     TimeEnd = models.DateTimeField(("Время начала битвы"), auto_now=False, auto_now_add=False)
     TimeStart = models.DateTimeField(("Время завершения битвы"), auto_now=False, auto_now_add=False)
+    timestamp    = models.DateTimeField(auto_now_add=True)
+
+    # def __str__(self):
+    #     return self.event
+        # return str(self.TimeStart)
+    # def is_active(self):
+    #     if timezone.now > self.TimeEnd :
+    #         return False
+    #     return True
 
 
-    def __str__(self):
-        return self.event.event_title
 
-    def is_active(self):
-        if timezone.now > self.TimeEnd :
-            return False
-        return True
-
-
-# class ThreadManager(models.Manager):
-#     def by_user(self, user):
-#         qlookup = Q(first=user) | Q(second=user)
-#         qlookup2 = Q(first=user) & Q(second=user)
-#         qs = self.get_queryset().filter(qlookup).exclude(qlookup2).distinct()
-#         return qs
-
-#     def get_or_new(self, user, other_username): # get_or_create
-#         username = user.username
-#         if username == other_username:
-#             return None
-#         qlookup1 = Q(first__username=username) & Q(second__username=other_username)
-#         qlookup2 = Q(first__username=other_username) & Q(second__username=username)
-#         qs = self.get_queryset().filter(qlookup1 | qlookup2).distinct()
-#         if qs.count() == 1:
-#             return qs.first(), False
-#         elif qs.count() > 1:
-#             return qs.order_by('timestamp').first(), False
-#         else:
-#             Klass = user.__class__
-#             user2 = Klass.objects.get(username=other_username)
-#             if user != user2:
-#                 obj = self.model(
-#                         first=user, 
-#                         second=user2
-#                     )
-#                 obj.save()
-#                 return obj, True
-#             return None, False
 
 
 # class Thread(models.Model):

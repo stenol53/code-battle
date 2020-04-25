@@ -7,7 +7,7 @@ class Event(models.Model):
     publish_date = models.DateTimeField('Дата публикации')
     event_status = models.CharField('Текущее состояние ивента', max_length = 20, default="Еще не начался")
     event_photo = models.FileField('Изображение для ивента', upload_to='event_media', blank=True, null=True)    
-    competitors_id_list = models.TextField('Список участников', blank=True)
+    competitors_id_list = models.TextField('Список участников', blank=True, default="")
 
     def get_text_preview(self):
         if len(str(self.event_text)) >= 300:
@@ -45,3 +45,7 @@ class Event(models.Model):
             if str(id) == elem:
                 return True
         return False
+
+    def __str__(self):
+        return self.event_title
+    
