@@ -36,7 +36,7 @@ def accept_event(request):
         data = {
             'event_id': request.POST.get('event_id')
         }
-        request.session.modified = True
+        request.session.modified = True 
         return JsonResponse(data)
 
     return redirect(request.POST.get('url_from'))
