@@ -37,7 +37,7 @@
         </form>
     </div>
 
-    {% if latest_events_list%}
+    {% if latest_events_list %}
     <div class="event-grid grid">
     {% for elem in latest_events_list %}
         <!-- Это сама карточка эвента ее можно генерировать в цикле -->
@@ -50,11 +50,14 @@
                 </div>
             </div>
             {% if elem.event_photo %}
-            <img class="card--image" src="{{ elem.event_photo.url }}"> {% endif%}
+            <img class="card--image" src="{{ elem.event_photo.url }}"> 
+            {% endif %}
             <div class="card--bottom-side">
                 <div class="card--text-section">
                     <h4 class="card--text-section-title">Описание</h4>
-                    <p class="card--text-section-text">{{ elem.event_text }}</p>
+                    <p class="card--text-section-text">{{ elem.get_text_preview }}</p>
+                    <h4 class="competitors-cout">Количество участников: {{ elem.get_users_count }}</h4>
+                    <h4>Статус: <span class="status">{{ elem.event_status }}</span></h4>
                 </div>
                 <div class="card--buttons">
                     <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>

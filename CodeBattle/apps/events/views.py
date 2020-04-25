@@ -30,6 +30,9 @@ def accept_event(request):
             if not item_exists:
                 request.user.addEvent(request.POST.get('event_id'))
                 request.session.modified = True
+                ev = Event.objects.get(id = request.POST.get('event_id'))
+                ev.add_user_to_list(request.user.id)
+                print(ev.get_users())
         
 
     if request.is_ajax():
@@ -47,6 +50,10 @@ def deny_event(request):
     if request.method == "POST":
         request.user.removeEvent(request.POST.get('event_id'))
         request.session.modified = True 
+        ev = Event.objects.get(id = request.POST.get('event_id'))
+        ev.remove_user_from_list(request.user.id)
+        print(ev.get_users())
+
     if request.is_ajax():
         data = {
             'event_id': request.POST.get('event_id')

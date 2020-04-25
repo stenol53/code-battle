@@ -11,7 +11,7 @@
 }
 
 .event-grid--item {
-    height: 600px;
+    height: 650px;
     margin: 20px;
     flex-basis: 31%;
 }
@@ -39,4 +39,8 @@
 
 .accepted {
     background-color: #C4C4C4;
+}
+
+.competitors-count {
+    
 }
