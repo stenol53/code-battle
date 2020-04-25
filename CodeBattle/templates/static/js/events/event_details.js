@@ -31,26 +31,37 @@ $.ajaxSetup({
 });
 ///////////////////////////////////////////////
 
+const closeInfoWindow = document.querySelector('.close-info-button');
+
+closeInfoWindow.addEventListener('click', () => {
+    document.querySelector('.info-window').style.display = 'none';
+});
 
 function accept_event() {
-    console.log(111);
-    $('.card--secondary-button').each(function (index, el) { 
-        console.log(333);
-         $(el).click(function (e) { 
-             e.preventDefault();
-             
+    $('.card--secondary-button').each(function(index, el) {
+        $(el).click(function(e) {
+            e.preventDefault();
+
             let id = $(el).data('id');
 
-
-            $.get( "/events/event_details/", { event_id : id} )
-                .done(function( data ) {
-                    alert( "Data Loaded: " + data );
-
-
-
+            $.get("/events/event_details/", { event_id: id })
+                .done(function(data) {
                     // ПИШИ КОД ТУТ
 
+                    console.log(data);
+
+                    const modal = document.querySelector('.info-window');
+                    modal.style.display = 'flex';
+
+                    document.querySelector('.card--title').textContent = data.title;
+                    document.querySelector('.card--time-text').textContent = data.date;
+                    document.querySelector('.card--text-section-text').textContent = data.text;
+                    document.querySelector('.modal--image').src = data.photo;
+                    document.querySelector('.modal--status').textContent = data.status;
+                    document.querySelector('.modal--count').textContent = data.users_count;
+                    // const 
+
                 });
-         });
+        });
     });
 }

@@ -37,9 +37,50 @@
         </form>
     </div>
 
+
+    <!-- Modal window -->
+    <section class="info-window">
+
+        <div class="close-info-button">
+            <img class="close-info-icon" src={% static "images/events/times-icon.svg" %}>
+        </div>
+
+        <div class="modal card">
+            <div class="card--top-side">
+                <h3 class="card--title"></h3>
+                <div class="card--time">
+                    <!-- ../images/clock-icon.svg -->
+                    <img src="" class="card--time-icon">
+                    <p class="card--time-text"></p>
+                </div>
+            </div>
+            <div class="modal--image-container">
+                <img class="modal--image card--image" src="">
+            </div>
+            <div class="card--bottom-side">
+                <div class="card--text-section">
+                    <h4 class="card--text-section-title">Описание</h4>
+                    <p class="card--text-section-text modal--text"></p>
+                </div>
+                <div class="modal--span">
+                    <h3>Статус:&nbsp</h3>
+                    <h4 class="modal--status"></h4>
+                </div>
+                <div class="modal--span">
+                    <h3>Коичество участников:&nbsp</h3>
+                    <h4 class="modal--count"></h4>
+                </div>
+                <div class="card--buttons modal--buttons">
+                    <a class="event-grid--apply card--main-button button filled">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     {% if latest_events_list %}
     <div class="event-grid grid">
-    {% for elem in latest_events_list %}
+        {% for elem in latest_events_list %}
         <!-- Это сама карточка эвента ее можно генерировать в цикле -->
         <div class="event-grid--item card">
             <div class="card--top-side">
@@ -50,7 +91,9 @@
                 </div>
             </div>
             {% if elem.event_photo %}
-            <img class="card--image" src="{{ elem.event_photo.url }}"> 
+            <figure class="card--image-container">
+                <img class="card--image" src="{{ elem.event_photo.url }}">
+            </figure>
             {% endif %}
             <div class="card--bottom-side">
                 <div class="card--text-section">
@@ -60,13 +103,13 @@
                 <div class="card--buttons">
                     <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
                     <a class="card--secondary-button button text" data-id="{{ elem.id }}" href="{% url 'event_details' %}">Узнать подробнее</a>
-                    
+
 
 
                 </div>
             </div>
         </div>
-    {% endfor %}    
+        {% endfor %}
     </div>
     {% else %}
     <div class="events-empty">

@@ -45,20 +45,21 @@
 /* Modal window */
 
 .info-window {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    min-height: 100vh;
     padding: 40px 0;
-    /* height: 100vh; */
-    background-color: black;
-    display: flex;
+    background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
 }
 
 .modal {
     width: 50%;
+    padding: 30px 40px;
 }
 
 .modal--image-container {
@@ -71,4 +72,43 @@
     width: 50%;
 }
 
-.competitors-count {}
+.modal--buttons {
+    justify-content: center;
+}
+
+.modal--text {
+    font-size: 0.9rem;
+}
+
+.modal--span {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.close-info-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    user-select: none;
+    font-size: 5rem;
+    width: 100px;
+    height: 100px;
+}
+
+
+/* .close-info-button:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+} */
+
+.close-info-icon {
+    height: 100%;
+    opacity: 0.2;
+    transition: opacity 0.15s ease;
+}
+
+.close-info-icon:hover {
+    opacity: 0.6;
+}
