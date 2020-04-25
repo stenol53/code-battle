@@ -53,10 +53,12 @@ function accept_event() {
                     const modal = document.querySelector('.info-window');
                     modal.style.display = 'flex';
 
+                    if (data.photo) {
+                        document.querySelector('.modal--image').src = data.photo;
+                    }
                     document.querySelector('.card--title').textContent = data.title;
                     document.querySelector('.card--time-text').textContent = data.date;
                     document.querySelector('.card--text-section-text').textContent = data.text;
-                    document.querySelector('.modal--image').src = data.photo;
                     document.querySelector('.modal--status').textContent = data.status;
                     document.querySelector('.modal--count').textContent = data.users_count;
                     // const 
