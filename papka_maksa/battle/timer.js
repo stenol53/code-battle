@@ -20,3 +20,37 @@ let interval = setInterval(() => {
         timerBorder.style.borderColor = 'red';
     }
 }, 1000);
+
+// Switch active problem
+
+const problems = document.querySelectorAll('.problem');
+const submitButton = document.querySelector('.task-answers-submit');
+
+// Removes class=current from all who has it
+function clearActive() {
+    document.querySelectorAll('.current').forEach(el => {
+        el.classList.remove('current');
+    });
+}
+
+// Change color on click
+problems.forEach(problem => {
+    problem.addEventListener('click', () => {
+        clearActive();
+        problem.classList.add('current');
+    });
+});
+
+let i = 3;
+// Switch current task on submit click
+submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Здесь будет ajax запрос к серверу 
+    // который вернет информацию о следующей задаче
+
+    if (problems[i]) {
+        clearActive();
+        problems[i++].classList.add('current');
+    }
+});
