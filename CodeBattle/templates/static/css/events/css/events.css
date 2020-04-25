@@ -7,7 +7,7 @@
 .event-grid {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .event-grid--item {
@@ -39,4 +39,8 @@
 
 .accepted {
     background-color: #C4C4C4;
+}
+
+.competitors-count {
+    
 }

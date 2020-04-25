@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {% load static %}
-    <link rel="stylesheet" href={% static "css/base.css" %}>
-    <link rel="stylesheet" href={% static "css/buttons.css" %}>
-    <link rel="stylesheet" href={% static "css/core/css/landing.css" %} />
-    <title>Битва кодеров от Альфа-Банк</title>
+    <link rel="stylesheet" href="../../CodeBattle/templates/static/css/base.css" />
+    <link rel="stylesheet" href="../../CodeBattle/templates/static/css/buttons.css" />
+    <link rel="stylesheet" href="landing.css" />
+    <title>Document</title>
 </head>
 
 <body class="land-body">
@@ -24,11 +22,11 @@
                 <div class="secondary-block">
                     <h2 class="secondary-title">ДОКАЖИ ЧТО ТЫ<br> ЦАРЬ ГОРЫ</h2>
                     <p class="secondary-text">Зарегистрируйся и участвуй в эпичных кодерских сражениях...Нужно придумать что-то та и вообще текста поменять</p>
-                    <a class="secondary-button button filled" href="{% url 'account_login' %}">Прими участие</a>
+                    <a class="secondary-button button filled" href="#">Прими участие</a>
                 </div>
             </div>
 
-            <img class="landing-image" src={% static "images/core/prog_battle.svg" %}>
+            <img class="landing-image" src="prog_battle.svg">
         </div>
 
     </div>

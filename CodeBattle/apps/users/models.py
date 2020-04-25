@@ -69,7 +69,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         self.save()
         return True
       return False    
-      
 
     def addEvent(self,id):
       if not self.is_accepted_event(id):

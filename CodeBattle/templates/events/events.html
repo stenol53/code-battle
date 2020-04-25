@@ -12,7 +12,7 @@
     <link rel="stylesheet" href={% static "css/cards.css" %}>
     <link rel="stylesheet" href={% static "css/events/css/events.css" %}>
 
-    <title>События</title>
+    <title>Битва кодеров от Альфа-Банк</title>
 </head>
 
 <body>
@@ -37,38 +37,35 @@
         </form>
     </div>
 
-
-
-    {% if latest_events_list%} {% for elem in latest_events_list %}
+    {% if latest_events_list %}
     <div class="event-grid grid">
+    {% for elem in latest_events_list %}
         <!-- Это сама карточка эвента ее можно генерировать в цикле -->
         <div class="event-grid--item card">
             <div class="card--top-side">
                 <h3 class="card--title">{{ elem.event_title }}</h3>
                 <div class="card--time">
-
                     <img src={% static "images/events/clock-icon.svg" %} class="card--time-icon">
-
                     <p class="card--time-text">{{ elem.publish_date }}</p>
                 </div>
             </div>
             {% if elem.event_photo %}
-            <img class="card--image" src="{{ elem.event_photo.url }}"> {% endif%}
+            <img class="card--image" src="{{ elem.event_photo.url }}"> 
+            {% endif %}
             <div class="card--bottom-side">
                 <div class="card--text-section">
                     <h4 class="card--text-section-title">Описание</h4>
-                    <p class="card--text-section-text">{{ elem.event_text }}</p>
+                    <p class="card--text-section-text">{{ elem.get_text_preview }}</p>
                 </div>
                 <div class="card--buttons">
                     <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
-                    <a class="event-grid--info card--secondary-button button text" href="/event/info">Узнать подробнее</a>
+                    <a class="card--secondary-button button text" href="{% url 'event_details' elem.id %}">Узнать подробнее</a>
                 </div>
             </div>
         </div>
+    {% endfor %}    
     </div>
-    </div>
-    </div>
-    {% endfor %} {% else %}
+    {% else %}
     <div class="events-empty">
         <img src={% static "images/events/times-icon.svg" %} class="events-empty--icon">
         <div class="events-empty--text">На данный момент активных событий нет :(</div>

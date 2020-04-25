@@ -18,8 +18,7 @@ def event_details(request, event_id):
     except:
         raise Http404("Ивент не найден!")
 
-    return render(request, 'event_detail.html', {'event' : event})
-
+    return render(request, 'event_details.html', {'event' : event})
 
 def accept_event(request):
     if request.method == "POST": 
@@ -27,17 +26,20 @@ def accept_event(request):
 
         print(accept_list)
         if len(accept_list) != 0:
-            item_exists = next((item for item in accept_list if item != "" and int(item) == request.POST.get('event_id')),False)
+            item_exists = next((item for item in accept_list if item != "" and item == request.POST.get('event_id')),False)
             if not item_exists:
                 request.user.addEvent(request.POST.get('event_id'))
                 request.session.modified = True
+                ev = Event.objects.get(id = request.POST.get('event_id'))
+                ev.add_user_to_list(request.user.id)
+                print(ev.get_users())
         
 
     if request.is_ajax():
         data = {
             'event_id': request.POST.get('event_id')
         }
-        request.session.modified = True
+        request.session.modified = True 
         return JsonResponse(data)
 
     return redirect(request.POST.get('url_from'))
@@ -48,6 +50,10 @@ def deny_event(request):
     if request.method == "POST":
         request.user.removeEvent(request.POST.get('event_id'))
         request.session.modified = True 
+        ev = Event.objects.get(id = request.POST.get('event_id'))
+        ev.remove_user_from_list(request.user.id)
+        print(ev.get_users())
+
     if request.is_ajax():
         data = {
             'event_id': request.POST.get('event_id')
@@ -64,8 +70,8 @@ def get_events_api(request):
     lst = request.user.getAcceptedEvents()
     jsn = list()
     for elem in lst:
-        if elem != None:
-            i = int(elem)
+        if elem:
+            i = elem
             data = {
                 'event_id': i
             }
