@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> {% if not user.is_authenticated %}
     <meta http-equiv="Refresh" content="0; url={% url 'account_login' %}" /> {% endif %}
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" /> {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    {% load static %}
     <link rel="stylesheet" href={% static "css/base.css" %}>
     <link rel="stylesheet" href={% static "css/buttons.css" %}>
     <link rel="stylesheet" href={% static "css/header.css" %}>
     <link rel="stylesheet" href={% static "css/cards.css" %}>
     <link rel="stylesheet" href={% static "css/events/css/events.css" %}>
+    <link rel="stylesheet" href={% static "css/footer.css" %}>
 
     <title>Битва кодеров от Альфа-Банк</title>
 </head>
@@ -20,25 +22,37 @@
 
     <!-- Для всех страниц общий хедер -->
     <header class="header">
-        <a class="profile-container" href="#">
-            <img class="profile-image" src={% static "images/events/ava.png" %}>
-            <!-- Если это админ -->
-            <div class="profile-user">
-                <span class="profile-name">{{ user.name }} {{ user.sirname }}</span>
-                <!-- Если это админ, если нет - не отображать -->
-                {% if user.is_staff %}
-                <span class="profile-admin">Admin</span> {% endif %}
+        <a href="{% url 'events' %}">   
+            <div class="header-logo--title--container">
+                <img src={% static "images/events/alfa-name-white.png" %} class="header-title--logo">
+                <p class="logo--text">#БитваКодеров</p>
             </div>
         </a>
 
-        {% if user.is_staff %}
-        <a class="admin-panel-button button filled" href="/admin">Перейти в админ-панель</a> {% endif %}
+        <div class="containe--header-buttons">
 
-        <form class="form--logout" method="post" action="{% url 'account_logout' %}">
-            {% csrf_token %} {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
-            <button class="profile-logout button filled" type="submit">Выход</button>
-        </form>
+            <a class="profile-container" href="#">
+                <img class="profile-image" src={% static "images/events/ava.png" %}>
+                <!-- Если это админ -->
+                <div class="profile-user">
+                    <span class="profile-name">{{ user.name }} {{ user.sirname }}</span>
+                    <!-- Если это админ, если нет - не отображать -->
+                    {% if user.is_staff %}
+                    <span class="profile-admin">Admin</span> {% endif %}
+                </div>
+            </a>
+
+
+            {% if user.is_staff %}
+            <a class="admin-panel-button button filled" href="/admin">Перейти в админ-панель</a> {% endif %}
+
+            <form class="form--logout" method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %} {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
+                <button class="profile-logout button filled" type="submit">Выход</button>
+            </form>
+        </div>
+
         <!-- <button class="profile-logout button filled">Выйти</button> -->
     </header>
 
@@ -132,8 +146,10 @@
                     <p class="card--text-section-text">{{ elem.get_text_preview }}</p>
                 </div>
                 <div class="card--buttons">
-                    <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
-                    <a class="card--secondary-button button text" data-id="{{ elem.id }}" href="{% url 'event_details' %}">Узнать подробнее</a>
+                    <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}"
+                        type="submit">Подать заявку</a>
+                    <a class="card--secondary-button button text" data-id="{{ elem.id }}"
+                        href="{% url 'event_details' %}">Узнать подробнее</a>
                 </div>
             </div>
         </div>
@@ -151,6 +167,10 @@
     <script src={% static 'js/jquery-3.5.0.min.js' %}></script>
     <script src={% static 'js/events/script.js' %}></script>
     <script src={% static 'js/events/event_details.js' %}></script>
+
+    <footer>
+
+    </footer>
 
 </body>
 

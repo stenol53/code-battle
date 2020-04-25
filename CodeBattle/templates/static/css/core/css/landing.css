@@ -19,19 +19,25 @@
     /* position: absolute; */
     /* left: 0;
     bottom: 0; */
-    width: 50rem;
+    height: 40vh;
 }
 
 .container--landing-image--text {
     display: flex;
     margin: 20px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.landing--text {
+    font-size: 1.2rem;
 }
 
 .big-title {
     width: 100%;
     font-size: 3rem;
     color: #F04E4B;
-    margin-left: -20px;
+    margin-left: 30px;
 }
 
 .big-title::first-line {
@@ -50,7 +56,9 @@
 }
 
 .icon--logo {
-    height: 300px;
+    height: 250px;
+    background-color: red;
+    padding: 10px;
 }
 
 .secondary-block {
