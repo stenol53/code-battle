@@ -64,7 +64,7 @@ def get_events_api(request):
     lst = request.user.getAcceptedEvents()
     jsn = list()
     for elem in lst:
-        if elem:
+        if elem != None:
             i = int(elem)
             data = {
                 'event_id': i
