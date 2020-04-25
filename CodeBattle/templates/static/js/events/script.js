@@ -38,7 +38,7 @@ function onEventClick(e){
 }
 
 function set_event_click(){
-    $('.event-grid--item').each(function (index,el) {
+    $('.card--main-button').each(function (index,el) {
 
         $(el).css('cursor', 'pointer');
 
@@ -52,44 +52,44 @@ function set_event_click(){
     })
 }
 
-function accept_event() {
-    $('.card--main-button').each(function (index, el) { 
-         $(el).click(function (e) { 
-             e.preventDefault();
+// function accept_event() {
+//     $('.card--main-button').each(function (index, el) { 
+//          $(el).click(function (e) { 
+//              e.preventDefault();
              
-            let id = $(el).data('id');
+//             let id = $(el).data('id');
 
-            if($(e.target).hasClass('accepted')){
-                $.ajax({
-                    type: "POST",
-                    url: "/events/deny/",
-                    data: {
-                        'event_id': id
-                    },
-                    dataType: "json",
-                    success: function (response) {
-                        $(el).removeClass('accepted');
-                        $(el).text("Подать заявку");
-                    }
-                });
-            } else {
-                $.ajax({
-                    type: "POST",
-                    url: "/events/accept/",
-                    data: {
-                        'event_id': id
-                    },
-                    dataType: "json",
-                    success: function (response) {
-                        $(el).addClass('accepted');
-                        $(el).text("Отменить заявку");
-                    }
-                });
-            }
+//             if($(e.target).hasClass('accepted')){
+//                 $.ajax({
+//                     type: "POST",
+//                     url: "/events/deny/",
+//                     data: {
+//                         'event_id': id
+//                     },
+//                     dataType: "json",
+//                     success: function (response) {
+//                         $(el).removeClass('accepted');
+//                         $(el).text("Подать заявку");
+//                     }
+//                 });
+//             } else {
+//                 $.ajax({
+//                     type: "POST",
+//                     url: "/events/accept/",
+//                     data: {
+//                         'event_id': id
+//                     },
+//                     dataType: "json",
+//                     success: function (response) {
+//                         $(el).addClass('accepted');
+//                         $(el).text("Отменить заявку");
+//                     }
+//                 });
+//             }
 
-         });
-    });
-}
+//          });
+//     });
+// }
 
 function check_state() {  
     $.getJSON("/events/api", (json) => {
