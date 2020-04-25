@@ -17,7 +17,7 @@
 
 .battle-container {
     width: 100%;
-    height: 100vh;
+    height: 95vh;
     display: flex;
     justify-content: flex-start;
     user-select: none;
@@ -52,6 +52,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.task--title {
+    margin-bottom: 40px;
 }
 
 .task--text {
