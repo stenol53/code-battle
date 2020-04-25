@@ -25,6 +25,16 @@
     margin: 0 5px;
 }
 
+.card--time-icon--logo {
+    height: 50px;
+    margin-top: 10px;
+}
+
+.card-top--logo--title {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .card--time-text {
     color: #F04E4B;
 }

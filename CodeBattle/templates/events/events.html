@@ -47,10 +47,12 @@
 
         <div class="modal card">
             <div class="card--top-side">
-                <h3 class="card--title"></h3>
+                <div class="card-top--logo--title">
+                    <img src={% static "images/events/alpha-red.png" %} class="card--time-icon--logo">
+                    <h3 class="card--title"></h3>
+                </div>
                 <div class="card--time">
-                    <!-- ../images/clock-icon.svg -->
-                    <img src="" class="card--time-icon">
+                    <img src={% static "images/events/clock-icon.svg" %} class="card--time-icon">
                     <p class="card--time-text"></p>
                 </div>
             </div>
@@ -84,7 +86,10 @@
         <!-- Это сама карточка эвента ее можно генерировать в цикле -->
         <div class="event-grid--item card" data-id="{{ elem.id }}">
             <div class="card--top-side">
-                <h3 class="card--title">{{ elem.event_title }}</h3>
+                <div class="card-top--logo--title">
+                    <img src={% static "images/events/alpha-red.png" %} class="card--time-icon--logo">
+                    <h3 class="card--title">{{ elem.event_title }}</h3>
+                </div>
                 <div class="card--time">
                     <img src={% static "images/events/clock-icon.svg" %} class="card--time-icon">
                     <p class="card--time-text">{{ elem.publish_date }}</p>

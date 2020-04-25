@@ -11,21 +11,27 @@
 }
 
 .bottom-container {
-    position: relative;
+    /* position: relative; */
     height: 80%;
 }
 
 .landing-image {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    /* position: absolute; */
+    /* left: 0;
+    bottom: 0; */
     width: 50rem;
+}
+
+.container--landing-image--text {
+    display: flex;
+    margin: 20px;
 }
 
 .big-title {
     width: 100%;
     font-size: 3rem;
     color: #F04E4B;
+    margin-left: -20px;
 }
 
 .big-title::first-line {
@@ -36,6 +42,15 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+.title-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.icon--logo {
+    height: 300px;
 }
 
 .secondary-block {
