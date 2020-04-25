@@ -26,7 +26,7 @@ def accept_event(request):
 
         print(accept_list)
         if len(accept_list) != 0:
-            item_exists = next((item for item in accept_list if item != "" and int(item) == request.POST.get('event_id')),False)
+            item_exists = next((item for item in accept_list if item != "" and item == request.POST.get('event_id')),False)
             if not item_exists:
                 request.user.addEvent(request.POST.get('event_id'))
                 request.session.modified = True
@@ -64,7 +64,7 @@ def get_events_api(request):
     jsn = list()
     for elem in lst:
         if elem:
-            i = int(elem)
+            i = elem
             data = {
                 'event_id': i
             }
