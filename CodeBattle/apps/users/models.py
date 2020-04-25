@@ -69,7 +69,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         self.save()
         return True
       return False    
-      
 
     def addEvent(self,id):
       if not self.is_accepted_event(id):
@@ -83,6 +82,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def is_accepted_event(self,id):
       # lst = self.serializable_value(self.event_list).split(",")
+      
       lst = str(self.event_list).split(",")
       for elem in lst:
         if str(id) == elem:

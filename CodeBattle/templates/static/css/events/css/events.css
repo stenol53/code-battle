@@ -7,7 +7,7 @@
 .event-grid {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .event-grid--item {
@@ -70,3 +70,5 @@
 .modal--image {
     width: 50%;
 }
+
+.competitors-count {}
