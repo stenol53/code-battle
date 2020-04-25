@@ -40,3 +40,33 @@
 .accepted {
     background-color: #C4C4C4;
 }
+
+
+/* Modal window */
+
+.info-window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 0;
+    /* height: 100vh; */
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 50%;
+}
+
+.modal--image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modal--image {
+    width: 50%;
+}

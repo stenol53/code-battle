@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 30px;
+    background-color: #323232;
+}
+
+.profile-container {
+    height: 100%;
+    display: flex;
+}
+
+.profile-image {
+    height: 100%;
+    margin-right: 10px;
+}
+
+.profile-user {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.profile-admin {
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.profile-name {}
+
+.profile-logout {
+    /* font-size: 0.4rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    margin: 0 20px;
+}

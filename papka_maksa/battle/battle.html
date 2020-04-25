@@ -6,11 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../CodeBattle/templates/static/css/base.css" />
     <link rel="stylesheet" href="../../CodeBattle/templates/static/css/buttons.css" />
+    <link rel="stylesheet" href="../../CodeBattle/templates/static/css/header.css" />
     <link rel="stylesheet" href="battle.css" />
     <title>Document</title>
 </head>
 
 <body>
+
+    <!-- Хедер -->
+    <header class="header">
+        <a class="profile-container" href="#">
+            <img class="profile-image" src="../../CodeBattle/templates/static/images/events/times-icon.svg">
+            <!-- Если это админ -->
+            <div class="profile-user">
+                <span class="profile-name">Maks</span>
+                <!-- Если это админ, если нет - не отображать -->
+                <span class="profile-admin">Admin</span>
+            </div>
+        </a>
+        <button class="profile-logout button filled">Выйти</button>
+    </header>
 
 
     <!-- Контейнер -->
@@ -63,13 +78,14 @@
             </div>
 
             <!-- Задача с текстовым ответом -->
+            <!-- Задача с кодом -->
 
         </div>
 
         <!-- Пустой блок -->
     </div>
 
-    <!-- <script src="timer.js"></script> -->
+    <script src="timer.js"></script>
 </body>
 
 </html>
