@@ -12,13 +12,30 @@ def events(request):
         return render(request,'account/login.html',{'message': "Авторизируйтесь, чтобы просматривать эту страницу"})
     
 
-def event_details(request, event_id):
-    try:
+def event_details(request):
+    if request.method == "GET":
+        event_id = request.GET.get('event_id')
         event = Event.objects.get(id = event_id)
-    except:
-        raise Http404("Ивент не найден!")
+        print(event)
+        print(event.get_users_count())
+        data = {
+            'title' : event.event_title,
+            'text' : event.event_text,
+            'date' : event.publish_date,
+            'status' : event.event_status,
+            'users_count' : event.get_users_count(),
+            'photo' : event.event_photo.url,
+            'test' : 1
+        }
+        return JsonResponse(data)
+    # try:
+    #     event = Event.objects.get(id = event_id)
+    # except:
+    #     raise Http404("Ивент не найден!")
 
-    return render(request, 'event_details.html', {'event' : event})
+    # return render(request, 'event_details.html', {'event' : event})
+
+
 
 def accept_event(request):
     if request.method == "POST": 
@@ -43,8 +60,6 @@ def accept_event(request):
         return JsonResponse(data)
 
     return redirect(request.POST.get('url_from'))
-
-
         
 def deny_event(request):
     if request.method == "POST":
@@ -62,8 +77,6 @@ def deny_event(request):
         return JsonResponse(data)
 
     return redirect(request.POST.get('url_from'))
-
-
 
 def get_events_api(request):
     # return JsonResponse(request.session.get('event_list'),safe = False)

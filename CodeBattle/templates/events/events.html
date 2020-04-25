@@ -59,7 +59,10 @@
                 </div>
                 <div class="card--buttons">
                     <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
-                    <a class="card--secondary-button button text" href="{% url 'event_details' elem.id %}">Узнать подробнее</a>
+                    <a class="card--secondary-button button text" data-id="{{ elem.id }}" href="{% url 'event_details' %}">Узнать подробнее</a>
+                    
+
+
                 </div>
             </div>
         </div>
@@ -75,6 +78,7 @@
 
     <script src={% static 'js/jquery-3.5.0.min.js' %}></script>
     <script src={% static 'js/events/script.js' %}></script>
+    <script src={% static 'js/events/event_details.js' %}></script>
 
 </body>
 

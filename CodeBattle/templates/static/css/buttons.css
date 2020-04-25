@@ -9,6 +9,10 @@
     transition: background background-color 0.3s ease;
 }
 
+.filled:hover {
+    background-color: #F67573;
+}
+
 .filled {
     background-color: #F04E4B;
 }
