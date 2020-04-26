@@ -187,17 +187,17 @@ function timer() {
                         }
                     })
 
-                    if (hours <= 1 && enter_button.css("display") == "none") {
+                    if (hours <= 3 && enter_button.css("display") == "none") {
                         // accept_button.css("display", "none")
                         enter_button.css("display", "block")
-                        $(timeTag).html("Состязание началось!");
+                        // $(timeTag).html("Состязание началось!");
                         
                     } else if (hours < 24) {
                         if (secs < 10) secs = "0" + secs;
                         if (mins < 10) mins = "0" + mins;
                         if (hours < 10) hours = "0" + hours;
 
-                        $(timeTag).html("Начало через: " + hours + ":" + mins + ":" + secs);
+                        $(timeTag).html("Осталось: " + hours + ":" + mins + ":" + secs);
                     }
                     
                 }

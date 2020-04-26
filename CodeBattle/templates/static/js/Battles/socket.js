@@ -180,7 +180,7 @@ $(document).ready(function () {
                     json.forEach(element => {
                         answerVariants.push(element)
                     });
-                    answerEndDate = Date(jsn["answer_end_date"])
+                    // answerEndDate = Date(jsn["answer_end_date"])
 
 
                 }
