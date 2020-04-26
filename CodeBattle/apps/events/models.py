@@ -12,8 +12,8 @@ class Event(models.Model):
     
 
     def get_text_preview(self):
-        if len(str(self.event_text)) >= 300:
-            return str(self.event_text)[:300] + "..."
+        if len(str(self.event_text)) >= 250:
+            return str(self.event_text)[:250] + "..."
         else:
             return str(self.event_text)
 
