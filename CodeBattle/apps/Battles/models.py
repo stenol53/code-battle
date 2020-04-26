@@ -8,36 +8,41 @@ from django.dispatch import receiver
 
 User = get_user_model()
 
-class AnswerVariant(models.Model):
-    text = models.TextField(("Текст ответа"))
-    correctly = models.BooleanField("Верный ли вариант")
-
-class Task(models.Model):
-    question = models.TextField(("Вопрос"))
-    image_url = models.FileField(("Изображение (Если нужно)"), upload_to=None, max_length=100)
-    AnswerVariant = models.ManyToManyField(AnswerVariant, verbose_name=("Варианты ответа"))
-
-
 class Battle(models.Model):
     event = models.ForeignKey("events.Event", verbose_name=("Событие"), on_delete=models.CASCADE)
-    taskList = models.ManyToManyField(Task, verbose_name=("Список заданий")) 
-    # TimeStart = models.DateTimeField(("Время начала битвы"), auto_now=False, auto_now_add=False)
     TimeEnd = models.DateTimeField(("Время завершения битвы"), auto_now=False, auto_now_add=False)
     winner = models.ForeignKey(User, null=True, blank=True, verbose_name=("Победитель"), on_delete=models.SET_NULL)
-
-
+    count = models.IntegerField(("Кол-во вопросов за 1 раунд"),null=True,blank=True)
+    time = models.IntegerField(("Время на один вопрос"),null=False, default = 30)
+    
 
 class Round(models.Model):
     Battle = models.ForeignKey(Battle, null=True, blank=True, on_delete=models.SET_NULL)
     user1 = models.ForeignKey(User,null=True,blank=True, verbose_name=("Первый участник"),related_name='user1', on_delete=models.SET_NULL)
     user2 = models.ForeignKey(User,null=True,blank=True,verbose_name=("Второй участник"),related_name='user2', on_delete=models.SET_NULL)
-
+    current_task = models.IntegerField(("Текущий вопрос"),null=True,blank=True)
 
 
 class Participent(models.Model):
     Battle = models.ForeignKey(Battle, null=True, blank=True, on_delete=models.SET_NULL)
     User  = models.ForeignKey(User,verbose_name="Участник",on_delete=models.CASCADE)
     isReady = models.BooleanField("Готовность")
+
+
+class Task(models.Model):
+    Battle = models.ForeignKey(Battle, null = True, blank = True, on_delete=models.SET_NULL)
+    t_id = models.IntegerField(("ID_IN_BATTLE"),null=False, default=1)
+    av_count = models.IntegerField(("ANSWER_VARIANTS_COUNT"),null=False, default=0)
+    question = models.TextField(("Вопрос"))
+    image_url = models.FileField(("Изображение (Если нужно)"), upload_to=None, null=True, blank=True,max_length=100)
+
+
+class AnswerVariant(models.Model):
+    Task = models.ForeignKey(Task,null = True, blank = True, on_delete=models.SET_NULL)
+    t_id = models.IntegerField(("ID_IN_QUESTION"),null=False, default=1)
+    text = models.TextField(("Текст ответа"))
+    correctly = models.BooleanField("Верный ли вариант")
+    
 
 
 @receiver(post_save, sender=Participent)
