@@ -101,7 +101,7 @@ $(document).ready(function () {
             wsStart = "wss://"
         var endpoint = wsStart + loc.host + loc.pathname
         console.log(endpoint)
-        var socket = new ReconnectingWebSocket(endpoint)
+        var socket = new WebSocket(endpoint)
 
 
         socket.onmessage = function (e) {
@@ -119,7 +119,8 @@ $(document).ready(function () {
                     'ready': true
                 }))    
 
-                $(e.target).replaceWith("<h1>Ожидаем готовности оппонента<h2>");
+                $(e.target).remove()
+                $('.wait-main-container').css("display", "flex")
             });
         }
 

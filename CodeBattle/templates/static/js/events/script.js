@@ -121,7 +121,7 @@ function check_state() {
         if(json !== null){
             for( let i = 0; i < json.length; i++)
             {
-                $(".card--main-button").each(function (index, el) {
+                $(".accept").each(function (index, el) {
                     let id = $(el).data('id');
                     console.log(id);
                     console.log(json[i].event_id.toString());
@@ -158,6 +158,14 @@ function timer() {
                         }
                     })  
                     enter_button.css("display","none")
+
+                    let accept_button = null;
+                    $('.accept').each(function(index, btn) {
+                        if ($(btn).data('id') == elem.id) {
+                            accept_button = $(btn);
+                        }
+                    })
+                    accept_button.css("display", "none")
 
                 } else {
                     let time = elem.time - curtime;

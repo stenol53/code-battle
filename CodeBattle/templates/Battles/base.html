@@ -1,25 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/base.css" %}/>
+    <link rel="stylesheet" href={% static "css/buttons.css" %}/>
+    <link rel="stylesheet" href={% static "css/Battles/css/ready.css" %} />
+    <link rel="stylesheet" href={% static "css/header.css" %} />
+    <!-- <link rel="stylesheet" href={% static "css/Battles/css/wait.css" %} /> -->
+
     <title>Битва Кодеров</title>
 </head>
+
 <body>
+
+    <header class="header">
+        <a href="{% url 'events' %}">   
+            <div class="header-logo--title--container">
+                <img src={% static "images/events/alfa-name-white.png" %} class="header-title--logo">
+                <p class="logo--text">#БитваКодеров</p>
+            </div>
+        </a>
+
+        <div class="containe--header-buttons">
+
+            <a class="profile-container" href="#">
+                <img class="profile-image" src={% static "images/events/ava.png" %}>
+                <!-- Если это админ -->
+                <div class="profile-user">
+                    <span class="profile-name">{{ user.name }} {{ user.sirname }}</span>
+                    <!-- Если это админ, если нет - не отображать -->
+                    {% if user.is_staff %}
+                    <span class="profile-admin">Admin</span> {% endif %}
+                </div>
+            </a>
+
+
+            {% if user.is_staff %}
+            <a class="admin-panel-button button filled" href="/admin">Перейти в админ-панель</a> {% endif %}
+
+            <form class="form--logout" method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %} {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
+                <button class="profile-logout button filled" type="submit">Выход</button>
+            </form>
+        </div>
+
+        <!-- <button class="profile-logout button filled">Выйти</button> -->
+    </header>
+
     <input id="user_id" type="hidden" value="{{ user.id }}">
     <input id="battle_id" type="hidden" value="{{ id }}">
     <h1>Вы открыли битву номер {{id}}</h1>
     <div class="content">
-        
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="wait-main-container">
+            <div class="wait">
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="wait--text">Ожидание начала раунда...</div>
+            </div>
+        </div>
+
+
+        <main class="ready-main-container">
+        <!-- Хедер сюда -->
+        <!-- <input id="readybtn" type="submit" value="Готов"> -->
+        <input class="ready button filled" id="readybtn" type="submit" value="Готов">
+
+    </main>
+
     </div>
     
-    <input id="readybtn" type="submit" value="Готов">
+
+    
+
 
 
     {% load static %}
     <script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
     <script src="{% static 'js/moment-with-locales.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
     <script src="{% static 'js/Battles/socket.js' %}"></script>
+
 </body>
+
 </html>
