@@ -10,68 +10,53 @@
 .ready {
 	font-size: 1.2rem;
 	padding: 10px 30px;
+	transition: opacity 0.3s ease;
 }
 
-.lds-ring {
-	display: inline-block;
-	position: relative;
-	width: 80px;
-	height: 80px;
-}
-.lds-ring div {
-	box-sizing: border-box;
-	display: block;
-	position: absolute;
-	width: 64px;
-	height: 64px;
-	margin: 8px;
-	border: 8px solid #323232;
-	border-radius: 50%;		
-	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-	border-color: #323232 transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-	animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-	animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-	animation-delay: -0.15s;
-}
-@keyframes lds-ring {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
-.wait-main-container {
-	position: fixed;
-	height: 100%;
-	width: 100%;
+.tip {
+	user-select: none;
 	display: none;
-	justify-content: center;
-}
-
-.wait {
-	height: 100%;
-	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	opacity: 0;
+	width: 60%;
+	transition: opacity 0.3s ease;
 }
 
-.wait--text {
-	margin-top: 20px;
+.tip-text {
+	font-size: 1.1rem;
+	font-weight: 300;
 }
 
-.continer {
-
+.tip-title {
+	width: 100%;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
+	margin: 0 1px 0;
+}
 
+.loading-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loading-text {
+	font-size: 1.3rem;
+}
+
+.loading-text,
+.undo {
+	color: #fd2b28;
+}
+
+.undo {
+	cursor: pointer;
+}
+
+.loader {
+	height: 30px;
+	width: 30px;
+	margin: 0 10px;
 }

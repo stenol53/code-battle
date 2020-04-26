@@ -119,7 +119,7 @@ $(document).ready(function () {
                     'ready': true
                 }))    
 
-                $(e.target).remove()
+                // $(e.target).css("display", "none")
                 $('.wait-main-container').css("display", "flex")
             });
         }
