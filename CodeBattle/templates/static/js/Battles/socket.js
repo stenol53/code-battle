@@ -118,7 +118,7 @@ $(document).ready(function () {
             wsStart = "wss://"
         var endpoint = wsStart + loc.host + loc.pathname
         console.log(endpoint)
-        var socket = new WebSocket(endpoint)
+        var socket = new ReconnectingWebSocket(endpoint)
 
         var curQuestionID = 1;
         var curMessage = "";
