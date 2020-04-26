@@ -88,6 +88,23 @@ $(document).ready(function () {
     }
 
 
+// function set_onclick_send_answer_btn() {
+//     $('#send-answer').click((e) => {
+//         e.preventDefault()
+
+//         let answer = $('input[name=answer]:checked')
+
+//         if (answer != null) {
+//             $.get('/'), { 'answer_id': answer.id }.done(
+//                 function (data) {
+                    
+//                 }
+//             )
+//         }
+
+//     })
+// }
+
 
 
 /////////////////////////////
@@ -128,6 +145,8 @@ $(document).ready(function () {
                     }))
                 }
 
+                let question_count = jsn["questions_count"]
+
                 if(jsn["start_session"] == true){ //СТАРТАНУЛИ ВОПРОСЫ
 
                     $("#readyBtn").replaceWith("<h1>НАЧИНАЕМ БЛЯ<h2>");
@@ -137,6 +156,17 @@ $(document).ready(function () {
                         'id': user_id,
                         'question_num': curQuestionID
                     }))
+
+                    for (let i = 0; i < question_count; i++) {
+                        let cl = "problem";
+                        if (i < curQuestionID - 1) {
+                            cl += " solved"
+                        } else if (i == curQuestionID - 1) {
+                            cl += " current"
+                        }
+                        $('.problems').append("<div class=\""+cl+"\"><span class=\"problem--text\">Задание "+(i+1)+"</span></div> ")
+                    }
+                    
                 }
             } else if(jsn["type"] == "question") {
                 if(jsn["method"] == "new") { //ПРИШЕЛ НОВЫЙ ВОПРОС
@@ -155,12 +185,21 @@ $(document).ready(function () {
 
                 }
 
-               
-                
-                
+                $('.task--text').html(curMessage)
+                $('.answer-grid-item').each((elem) =>{
+                    $(elem).remove()
+                })
+                for (let i = 0; i < answerVariants.length; i++) {
+                    $('.answers-grid').append("<div class=\"answers-grid-item\"><input name=\"answer\" class=\"task--answer\" type=\"radio\" value=\""+(i+1)+"\" /><span class=\"task--answer-label\">"+ answerVariants[i] +"</span></div>")
+                }
+
+                $('.time').html(answerEndDate)
+
+                $('.ready-main-container').css("display", "none")
+                $('.battle-main-container').css("display", "block")
                 console.log(curMessage);
                 console.log(answerVariants);
-                console.log(answerEndDate);
+                console.log(answerEndDate);  
             }
 
         }
@@ -175,7 +214,6 @@ $(document).ready(function () {
                     'battle_id' : battle_id,
                     'ready': true
                 }))    
-
                 // $(e.target).css("display", "none")
                 $('.wait-main-container').css("display", "flex")
             });

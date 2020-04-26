@@ -107,9 +107,9 @@ class BattleConsumer(AsyncConsumer):
                         'type': 'session',
                         'id': self.me.id,
                         'start_session': True,
-                        'other_user_name': self.me.name,
-                        'other_sername' : self.me.sirname,
-                        'other_login' : self.me.username,
+                        'other_user_name': opp.name,
+                        'other_sername' : opp.sirname,
+                        'other_login' : opp.username,
                         'questions_count': self.battle.count,
                     }
                     good = True
