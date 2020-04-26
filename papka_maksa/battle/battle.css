@@ -1,155 +1,182 @@
 .timer {
-    margin: 0 auto;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 0.2rem solid black;
+	margin: 0 auto;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 0.2rem solid black;
 }
 
 .time {
-    font-size: 1.2rem;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	font-size: 1.2rem;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.battle-main-container {
+	height: 100vh;
+	width: 100%;
 }
 
 .battle-container {
-    width: 100%;
-    height: 95vh;
-    display: flex;
-    justify-content: flex-start;
-    user-select: none;
+	position: relative;
+	width: 100%;
+	height: 90%;
+	display: flex;
+	user-select: none;
 }
 
 .watchers {
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+	width: 10%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 
 .watcher {
-    margin: 0 auto;
-    width: 40%;
-    border-radius: 50%;
+	margin: 0 auto;
+	width: 40%;
+	border-radius: 50%;
 }
-
 
 /* Tasks */
 
 .tasks {
-    width: 80%;
-    padding: 20px 0;
+	width: 80%;
+	padding: 20px 0;
 }
 
 .task {
-    margin: 0 auto;
-    width: 50%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	margin: 0 auto;
+	width: 50%;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .task--title {
-    margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 .task--text {
-    width: 100%;
-    margin-bottom: 30px;
+	width: 100%;
+	margin-bottom: 30px;
 }
 
 .task--answers {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .task-answers-submit {
-    margin: 0 auto;
-    width: 40%;
+	margin: 0 auto;
+	width: 40%;
 }
 
 .answers-grid {
-    width: 100%;
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
+	width: 100%;
+	margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
 }
 
 .answers-grid-item {
-    width: 100%;
-    display: flex;
-    margin-bottom: 10px;
+	width: 100%;
+	display: flex;
+	margin-bottom: 10px;
 }
 
-.task--answer {}
+.task--answer {
+}
 
 .task--answer-label {
-    width: 100%;
-    word-wrap: break-word;
-    font-size: 0.9rem;
+	width: 100%;
+	word-wrap: break-word;
+	font-size: 0.9rem;
 }
 
 .problems {
-    width: 10%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	width: 10%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .problem {
-    user-select: none;
-    cursor: pointer;
-    margin: 5px auto;
-    padding: 5px 0;
-    width: 80%;
-    text-align: center;
-    transition: color background-color 0.1s ease;
+	user-select: none;
+	cursor: pointer;
+	margin: 5px auto;
+	padding: 5px 0;
+	width: 80%;
+	text-align: center;
+	transition: color background-color 0.1s ease;
 }
 
 .problem:hover {
-    color: #F04E4B;
+	color: #f04e4b;
 }
 
 .current {
-    border-radius: 10px;
-    /* padding: 5px 0; */
-    color: white;
-    transition: color background-color 0.2s ease;
-    background-color: #F04E4B;
-    /* background-color: #323232; */
+	border-radius: 10px;
+	/* padding: 5px 0; */
+	color: white;
+	transition: color background-color 0.2s ease;
+	background-color: #f04e4b;
+	/* background-color: #323232; */
 }
 
 .current:hover {
-    color: white;
+	color: white;
 }
 
+.solved {
+	color: #c6c6c6;
+}
+
+/* Stats */
+
+.stats {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+}
+
+.stats--title {
+	margin: 0;
+}
+
+.stats--row {
+	display: flex;
+}
+
+/* Media */
+
 @media (max-width: 1000px) {
-    .task {
-        width: 75%;
-    }
-    .task-answers-submit {
-        width: 50%;
-    }
+	.task {
+		width: 75%;
+	}
+	.task-answers-submit {
+		width: 50%;
+	}
 }
 
 @media (max-width: 800px) {
-    .watchers {
-        display: none;
-    }
-    .tasks {
-        width: 100%;
-    }
-    .task {
-        width: 80%;
-    }
-    .task-answers-submit {
-        width: 60%;
-    }
+	.watchers {
+		display: none;
+	}
+	.tasks {
+		width: 100%;
+	}
+	.task {
+		width: 80%;
+	}
+	.task-answers-submit {
+		width: 60%;
+	}
 }
