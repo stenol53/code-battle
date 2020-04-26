@@ -153,7 +153,10 @@ $(document).ready(function () {
 
                
                 
-                
+                $('.ready-main-container').css("display", "none")
+                $('.battle-main-container').css("display", "block")
+
+
                 console.log(curMessage);
                 console.log(answerVariants);
                 console.log(answerEndDate);

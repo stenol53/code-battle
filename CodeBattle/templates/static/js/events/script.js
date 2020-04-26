@@ -73,7 +73,7 @@ $(document).ready(function () {
                         dataType: "json",
                         success: function (response) {
                             $(el).removeClass('accepted');
-                            $(el).text("Подать заявку");
+                            $(el).text("Подать");
                         }
                     });
                 } else {
@@ -86,7 +86,7 @@ $(document).ready(function () {
                         dataType: "json",
                         success: function (response) {
                             $(el).addClass('accepted');
-                            $(el).text("Отменить заявку");
+                            $(el).text("Отменить");
                         }
                     });
                 }
@@ -127,7 +127,7 @@ function check_state() {
                     console.log(json[i].event_id.toString());
                     if(json[i].event_id == id && json[i].accepted == true) {
                         $(el).addClass('accepted');
-                        $(el).text('Отменить заявку');
+                        $(el).text('Отменить');
                     }
                 });
 
@@ -151,21 +151,21 @@ function timer() {
                 if (curtime > elem.time || curtime == elem.time) {
                     timeArray.splice(timeArray.indexOf(elem),1)
 
-                    let enter_button = null;
-                    $('.hidden').each(function(index, btn) {
-                        if ($(btn).data('id') == elem.id) {
-                            enter_button = $(btn);
-                        }
-                    })  
-                    enter_button.css("display","none")
+                    // let enter_button = null;
+                    // $('.hidden').each(function(index, btn) {
+                    //     if ($(btn).data('id') == elem.id) {
+                    //         enter_button = $(btn);
+                    //     }
+                    // })  
+                    // enter_button.css("display","none")
 
-                    let accept_button = null;
-                    $('.accept').each(function(index, btn) {
-                        if ($(btn).data('id') == elem.id) {
-                            accept_button = $(btn);
-                        }
-                    })
-                    accept_button.css("display", "none")
+                    // let accept_button = null;
+                    // $('.accept').each(function(index, btn) {
+                    //     if ($(btn).data('id') == elem.id) {
+                    //         accept_button = $(btn);
+                    //     }
+                    // })
+                    // accept_button.css("display", "none")
 
                 } else {
                     let time = elem.time - curtime;
@@ -187,8 +187,8 @@ function timer() {
                         }
                     })
 
-                    if (hours == 0 && mins < 5 && enter_button.css("display") == "none") {
-                        accept_button.css("display", "none")
+                    if (hours <= 1 && enter_button.css("display") == "none") {
+                        // accept_button.css("display", "none")
                         enter_button.css("display", "block")
                         $(timeTag).html("Состязание началось!");
                         
