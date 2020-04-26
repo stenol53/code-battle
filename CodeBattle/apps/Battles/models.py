@@ -13,7 +13,7 @@ class Battle(models.Model):
     TimeEnd = models.DateTimeField(("Время завершения битвы"), auto_now=False, auto_now_add=False)
     winner = models.ForeignKey(User, null=True, blank=True, verbose_name=("Победитель"), on_delete=models.SET_NULL)
     count = models.IntegerField(("Кол-во вопросов за 1 раунд"),null=True,blank=True)
-    time = models.IntegerField(("Время на один вопрос"),null=False, default = 30)
+    task_time = models.IntegerField(("Время на один вопрос"),null=False, default = 30)
     
 
 class Round(models.Model):
