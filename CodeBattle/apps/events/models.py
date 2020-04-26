@@ -1,13 +1,15 @@
 from django.db import models
 from django.utils import timezone
+from django_unixdatetimefield import UnixDateTimeField
 
 class Event(models.Model):
     event_title = models.CharField('Название ивента', max_length = 34)
     event_text = models.TextField('Описание ивента')
-    publish_date = models.DateTimeField('Дата публикации')
+    publish_date = models.DateTimeField('Время начала ивента')
     event_status = models.CharField('Текущее состояние ивента', max_length = 20, default="Еще не начался")
     event_photo = models.FileField('Изображение для ивента', upload_to='event_media', blank=True, null=True)    
     competitors_id_list = models.TextField('Список участников', blank=True, default="")
+    
 
     def get_text_preview(self):
         if len(str(self.event_text)) >= 300:

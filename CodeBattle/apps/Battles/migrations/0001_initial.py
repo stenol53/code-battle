@@ -60,4 +60,14 @@ class Migration(migrations.Migration):
                 ('Task', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='Battles.Task')),
             ],
         ),
+        migrations.AddField(
+            model_name='battle',
+            name='taskList',
+            field=models.ManyToManyField(to='Battles.Task', verbose_name='Список заданий'),
+        ),
+        migrations.AddField(
+            model_name='battle',
+            name='winner',
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='Победитель'),
+        ),
     ]

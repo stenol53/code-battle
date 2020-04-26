@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../../CodeBattle/templates/static/css/base.css" />
+		<link rel="stylesheet" href="../../CodeBattle/templates/static/css/buttons.css" />
+		<link rel="stylesheet" href="../../CodeBattle/templates/static/css/header.css" />
+		<link rel="stylesheet" href="winner.css" />
+		<title>Winner</title>
+	</head>
+	<body>
+        <main class="winner-main-container">
+            <!-- Хедер -->
+			<header class="header">
+				<a class="profile-container" href="#">
+					<img class="profile-image" src="../../CodeBattle/templates/static/images/events/times-icon.svg" />
+					<!-- Если это админ -->
+					<div class="profile-user">
+						<span class="profile-name">Maks</span>
+						<!-- Если это админ, если нет - не отображать -->
+						<span class="profile-admin">Admin</span>
+					</div>
+				</a>
+				<button class="profile-logout button filled">Выйти</button>
+			</header>
+
+            <div class="winner--container">
+                    <span class="winner--ended">Событие завершено</span>
+                    <span class="winner--winner">Победитель:</span>
+                    <a href="#">
+                        <img class="winner--image" src="../../CodeBattle/templates/static/images/events/ava.png"></img>
+                    </a> 
+                    <span class="winner--name">Макс</span>
+                    <a class="button filled" href="#">Вернуться назад</a>
+                </div>
+        </main>
+    </body>
+</html>

@@ -3,66 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
-    <link rel="stylesheet" href={% static "css/base.css" %}>
-    <link rel="stylesheet" href={% static "css/buttons.css" %}>
-    <link rel="stylesheet" href={% static "css/core/css/landing.css" %} />
-    <link rel="stylesheet" href={% static "css/header.css" %}>
-    <link rel="stylesheet" href={% static "css/footer.css" %}>
-    <title>Битва кодеров от Альфа-Банк</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/base.css" %} />
+    <link rel="stylesheet" href={% static "css/buttons.css" %}/>
+    <link rel="stylesheet" href={% static "css/core/css/landing.css" %}/>
+    <title>Битва кодеров - Альфа-Банк</title>
 </head>
 
 <body class="land-body">
-
-    <!-- <header class="header">
-        <a href="{% url 'events' %}">   
-            <div class="header-logo--title--container">
-                <img src={% static "images/events/alfa-name-white.png" %} class="header-title--logo">
-                <p class="logo--text">#БитваКодеров</p>
-            </div>
-        </a>
-    </header> -->
-
-
     <div class="landing-container">
 
-        <!--  -->
-        <div class="title-container">
-            <img src={% static "images/core/alfa-logo-white.png" %} class="icon--logo">
-            <h1 class="big-title">СРАЗИСЬ С ДРУГИМИ КОДЕРАМИ И<br>ПОЛУЧИ РАБОТУ В АЛЬФА-БАНК</h1>
-        </div>
+        
 
-        <div class="container--landing-image--text">
+        <div class="landing-left">
+            <div class="landing-left--title-container">
 
-            <p class="landing--text">
-                <span style="color:#F04E4B">Альфа-Банк</span> устраивает грандиозные "Битвы кодеров". Это соревнования программистов, в которых каждый может проявить себя. Задания рассчитаны как на только начинающих кодеров, так и на уже опытных специалистов.
-                Здесь каждый получит море позитивных эмоций, большой опыт, а состязательный характер не даст заскучать никому. Так же не стоит забывать, что каждый проявивший себя участник, может рассчитывать на трудоустройство в один из крупнейших банков
-                страны. Дерзайте, все в ваших руках!
-            </p>
-
-        </div>
-
-
-
-        <div class="bottom-container">
-            <!--  -->
-            <img class="landing-image" src={% static "images/core/prog_battle.svg" %}>
-
-            <div class="secondary-title-container">
-                <div class="secondary-block">
-                    <h2 class="secondary-title">ДОКАЖИ ЧТО ТЫ<br> ЦАРЬ ГОРЫ</h2>
-                    <p class="secondary-text">Зарегистрируйся и участвуй в эпичных кодерских сражениях...Нужно придумать что-то та и вообще текста поменять</p>
-                    <a class="secondary-button button filled" href="{% url 'account_login' %}">Прими участие</a>
+                <div class="alfa--logo">
+                    <img src={% static "images/core/alfa-logo-white.png" %}/>
                 </div>
+
+                <h1 class="landing-left--title">СРАЗИСЬ С ДРУГИМИ<br>ПОЛУЧИ РАБОТУ В АЛ</h1>
             </div>
 
+            <div class="landing-left--hell-container">
+                <span class="landing-left--hell">СТЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ СТЕТ ХЕМ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ СЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ СТЕТ ХЕМ ТХЕМСТЕЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ СТЕТ ХЕМ ТХЕЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ СТЕТ ХЕМ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ СТЕТ ХЕЕТ СТЕТ ХЕМ ХЕМ СТЕТ ЕМ ХЕМ ММ М СТЕТ СТЕТ ХЕМ ТХЕМСТЕ ЕМСТЕТХ ЕМ СТЕТ СТЕТ ХЕМ ТХЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ М ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ ЕТ ХЕМ СТЕТ ХЕМ МЕТ ЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ СТЕТ ХЕМ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ СТЕТ ХЕМ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ СТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ ТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ ЕТ ЕМСТЕТХ ЕМ СТЕТ ХЕМ СТЕТХ ЕМСТЕ ТХЕМСТЕТХЕМ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ ХЕМ СТЕТХ ЕМСТЕ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ ХЕМ СТЕТХ ЕМСТЕ ТХЕМСТЕТХЕМ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ ХЕМ СТЕТХ ЕМСТЕ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ ХЕМ СТЕТХ ЕМСТЕ ТХЕМСТЕТХЕМ СТЕТ ХЕМ СТЕТ ХЕМ ТХЕМСТЕТХЕМ СТЕТ ЕМСТЕТХ ЕМ СТЕТ ХЕМ СТЕТХ ЕМСТЕ ТХЕМСТЕТХЕМ СТЕТ ХЕМ</span>
+
+                <!-- Image -->
+                <!-- <img class="landing-left--battle-image" src="progbattle.svg"> -->
+            </div>
         </div>
+
+        <div class="landing-right">
+            <div class="landing-right--title-container">
+                <h1 class="landing-right--title">&nbspКОДЕРАМИ И<br>ЬФА БАНК</h1>
+            </div>
+
+            <div class="landing-right--bottom-container">
+                <div class="landing-right--apply-container">
+                    <h2 class="landing-right--apply-title">ДОКАЖИ ЧТО ТЫ<br>ЦАРЬ ГОРЫ</h2>
+                    <p class="landing-right--apply-text">Зарегистрируйся и участвуй в эпичных кодерских сражениях...</p>
+                    <a href="{% url 'account_login' %}">
+                        <div class="landing-right--apply-button">
+                            ПРИМИ УЧАСТИЕ
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кривые -->
+        <img class="landing-curves" src={% static "images/core/allinone.svg" %}>
+
     </div>
-
-    <footer>
-
-    </footer>
-
 </body>
 
 </html>
