@@ -4,10 +4,10 @@ const tipText = document.querySelector('.tip-text');
 const undoButton = document.querySelector('.undo');
 
 const tips = [
-	'Типо подсказка 1 (что-то мемное) Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur error atque, non placeat sequi assumendaenim quia magni natus optio aliquam facilis facere earum fugit nesciunt in sunt est a',
-	'Типо подсказка 2 (что-то мемное) Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur error atque, non placeat sequi assumendaenim quia magni natus optio aliquam facilis facere earum fugit nesciunt in sunt est a',
-	'Типо подсказка 3 (что-то мемное) Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur error atque, non placeat sequi assumendaenim quia magni natus optio aliquam facilis facere earum fugit nesciunt in sunt est a',
-	'Типо подсказка 4 (что-то мемное) Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur error atque, non placeat sequi assumendaenim quia magni natus optio aliquam facilis facere earum fugit nesciunt in sunt est a',
+	'Подсказка 1: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur error atque, non placeat sequi assumendaenim quia magni natus optio aliquam facilis facere earum fugit nesciunt in sunt est a',
+	'Подсказка 2: Tenetur error atque, non placeat sequi assumendaenim quia magni natus optio aliquam facilis facere earum fugit nesciunt in sunt est a',
+	'Подсказка 3: Proin in elit quis ligula gravida vestibulum. Proin condimentum neque nec enim placerat pellentesque.',
+	'Подсказка 4: Quisque vehicula dapibus est, eget rhoncus purus. Phasellus egestas dolor vel lectus gravida maximus. Proin id ligula semper mi vehicula blandit.',
 ];
 
 function rand(max, min = 0) {
