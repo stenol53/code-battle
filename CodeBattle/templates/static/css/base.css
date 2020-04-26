@@ -1,28 +1,29 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    color: #0B1E31;
-    background-color: #F2F2F2;
+	padding: 0;
+	margin: 0;
+	font-family: 'Rubik', sans-serif;
+	/* font-family: 'Roboto', sans-serif; */
+	color: #0b1e31;
+	background-color: #f2f2f2;
 }
 
 button {
-    outline: none;
+	outline: none;
 }
 
 a {
-    text-decoration: none;
-    color: #0B1E31;
-    margin: 0;
-    padding: 0;
-    font-size: 0.8rem;
+	text-decoration: none;
+	color: #0b1e31;
+	margin: 0;
+	padding: 0;
+	font-size: 0.8rem;
 }
 
 p {
-    font-size: 0.9rem;
-    color: rgb(11, 30, 49, 0.9);
+	font-size: 0.9rem;
+	color: rgb(11, 30, 49, 0.9);
 }

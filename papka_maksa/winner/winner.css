@@ -1,0 +1,35 @@
+.winner-main-container {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+.winner--container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.winner--ended {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.winner--winner {
+	font-weight: 1.1rem;
+	font-weight: 300;
+	margin-bottom: 15px;
+}
+
+.winner--name {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 1.2rem;
+}
+
+.winner--image {
+	border-radius: 50%;
+}
