@@ -92,9 +92,15 @@ $(document).ready(function () {
 //     $('#send-answer').click((e) => {
 //         e.preventDefault()
 
-//         $('.answers-grid-item').each((elem) => {
-//             if ($(elem)
-//         })
+//         let answer = $('input[name=answer]:checked')
+
+//         if (answer != null) {
+//             $.get('/'), { 'answer_id': answer.id }.done(
+//                 function (data) {
+                    
+//                 }
+//             )
+//         }
 
 //     })
 // }
