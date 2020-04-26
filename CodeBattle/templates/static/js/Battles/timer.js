@@ -1,8 +1,8 @@
 const timerBorder = document.querySelector('.timer');
 const timer = document.querySelector('.timer > .time');
 
-let START_MIN = 5;
-let START_SEC = 0;
+let START_MIN = 0;
+let START_SEC = 30;
 
 let interval = setInterval(() => {
     if (START_SEC == 0) {

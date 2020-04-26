@@ -55,31 +55,31 @@
 
     </div>
 
-        <main class="ready-main-container">
+    <main class="ready-main-container">
 
-            <div class="tip">
-                <h3 class="tip-title">Подсказка:</h3>
-                <p class="tip-text"></p>
-                <div class="loading-container">
-                    <div class="loader">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <span class="loading-text">Ожидаем готовности оппонента...</span>
+        <div class="tip">
+            <h3 class="tip-title">Подсказка:</h3>
+            <p class="tip-text"></p>
+            <div class="loading-container">
+                <div class="loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
-                <span class="undo">Отмена</span>
+                <span class="loading-text">Ожидаем готовности оппонента...</span>
             </div>
+            <span class="undo">Отмена</span>
+        </div>
 
 
-            <input class="ready button filled" id="readybtn" type="submit" value="Готов к бою">
+        <input class="ready button filled" id="readybtn" type="submit" value="Готов к бою">
 
 
-            <script src="{% static 'js/Battles/moveStatham.js' %}"></script>
+        <script src="{% static 'js/Battles/moveStatham.js' %}"></script>
 
-        </main>
- 
+    </main>
+
 
 
 
@@ -87,20 +87,17 @@
         <!-- Контейнер -->
         <div class="battle-container">
             <!-- Блок со зрителями -->
-            <div class="watchers">
-                <!-- Типо иконка зрителя -->
+            <!-- <div class="watchers">
                 <div class="watcher">
                     <img src="../../CodeBattle/templates/static/images/events/clock-icon.svg" class="watcher-avatar" />
                 </div>
-                <!-- Типо иконка зрителя -->
                 <div class="watcher">
                     <img src="../../CodeBattle/templates/static/images/events/clock-icon.svg" class="watcher-avatar" />
                 </div>
-                <!-- Типо иконка зрителя -->
                 <div class="watcher">
                     <img src="../../CodeBattle/templates/static/images/events/clock-icon.svg" class="watcher-avatar" />
                 </div>
-            </div>
+            </div> -->
 
             <!-- Главный блок -->
             <div class="tasks">
@@ -110,7 +107,7 @@
 
                 <!-- Задача с раиобаттонами -->
                 <div class="task--radiobutton task">
-                    <h3 class="task--title">Задание 3</h3>
+                    <h3 class="task--title">Задание 1</h3>
                     <div class="task--text">
                         Условие: Вруниш (всегда говорит неправду) и Правдиш (всегда говорит правду) решили взять для
                         внука
@@ -120,7 +117,7 @@
                     </div>
                     <form action="" class="task--answers">
                         <div class="answers-grid">
-                            <div class="answers-grid-item">
+                            <!-- <div class="answers-grid-item">
                                 <input name="answer" class="task--answer" type="radio" value="1" />
                                 <span class="task--answer-label">Answer1thrgfhf</span>
                             </div>
@@ -137,10 +134,10 @@
                                 <input name="answer" class="task--answer" type="radio" value="4" />
                                 <span
                                     class="task--answer-label">Answer4sdfAnswer3sdflsdkjlfsdAnswer3sdflsdkjlfsdAnswer4sdfAnswer3sdflsdkjlfsdAnswer3sdflsdkjlfsd</span>
-                            </div>
+                            </div> -->
                         </div>
 
-                        <button class="task-answers-submit button filled">Submit</button>
+                        <button class="task-answers-submit button filled" id="send-answer">Ответить</button>
                     </form>
                 </div>
 
@@ -150,16 +147,13 @@
 
             <!-- Навигация по задачам -->
             <div class="problems">
-                <div class="problem solved">
+                <!-- <div class="problem solved">
                     <span class="problem--text">Задание 1</span>
                 </div>
                 <div class="problem solved">
                     <span class="problem--text">Задание 2</span>
                 </div>
                 <div class="problem current">
-                    <span class="problem--text">Задание 2</span>
-                </div>
-                <div class="problem">
                     <span class="problem--text">Задание 3</span>
                 </div>
                 <div class="problem">
@@ -168,6 +162,9 @@
                 <div class="problem">
                     <span class="problem--text">Задание 5</span>
                 </div>
+                <div class="problem">
+                    <span class="problem--text">Задание 6</span>
+                </div> -->
             </div>
 
             <!-- Статистика -->
@@ -175,11 +172,11 @@
                 <h3 class="stats--title">Задач решено:</h3>
                 <span class="stats--row">
                     <span>У тебя:&nbsp</span>
-                    <span class="stats--you">9</span>
+                    <span class="stats--you">0</span>
                 </span>
                 <span class="stats--row">
                     <span>У Противника:&nbsp</span>
-                    <span class="stats--enemy">10</span>
+                    <span class="stats--enemy">0</span>
                 </span>
             </div>
         </div>

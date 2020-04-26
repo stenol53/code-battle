@@ -151,21 +151,21 @@ function timer() {
                 if (curtime > elem.time || curtime == elem.time) {
                     timeArray.splice(timeArray.indexOf(elem),1)
 
-                    // let enter_button = null;
-                    // $('.hidden').each(function(index, btn) {
-                    //     if ($(btn).data('id') == elem.id) {
-                    //         enter_button = $(btn);
-                    //     }
-                    // })  
-                    // enter_button.css("display","none")
+                    let enter_button = null;
+                    $('.hidden').each(function(index, btn) {
+                        if ($(btn).data('id') == elem.id) {
+                            enter_button = $(btn);
+                        }
+                    })  
+                    enter_button.css("display","none")
 
-                    // let accept_button = null;
-                    // $('.accept').each(function(index, btn) {
-                    //     if ($(btn).data('id') == elem.id) {
-                    //         accept_button = $(btn);
-                    //     }
-                    // })
-                    // accept_button.css("display", "none")
+                    let accept_button = null;
+                    $('.accept').each(function(index, btn) {
+                        if ($(btn).data('id') == elem.id) {
+                            accept_button = $(btn);
+                        }
+                    })
+                    accept_button.css("display", "none")
 
                 } else {
                     let time = elem.time - curtime;
