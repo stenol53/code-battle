@@ -101,6 +101,7 @@
                     <p class="card--text-section-text">{{ elem.get_text_preview }}</p>
                 </div>
                 <div class="card--buttons">
+                    <a class="enter" data-id="{{ elem.id }}" type="submit">Войти</a>
                     <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
                     <a class="card--secondary-button button text" data-id="{{ elem.id }}" href="{% url 'event_details' %}">Узнать подробнее</a>
 
