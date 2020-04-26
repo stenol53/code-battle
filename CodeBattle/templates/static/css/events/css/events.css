@@ -8,6 +8,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    min-height: 86vh;
 }
 
 .event-grid--item {

@@ -25,9 +25,11 @@ def event_details(request):
             'date' : event.publish_date,
             'status' : event.event_status,
             'users_count' : event.get_users_count(),
-            'photo' : event.event_photo.url,
-            'test' : 1
+
         }
+        if event.event_photo:
+            data['photo'] = event.event_photo.url
+
         return JsonResponse(data)
     # try:
     #     event = Event.objects.get(id = event_id)

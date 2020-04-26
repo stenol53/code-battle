@@ -6,18 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> {% if not user.is_authenticated %}
     <meta http-equiv="Refresh" content="0; url={% url 'account_login' %}" /> {% endif %}
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" /> {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    {% load static %}
     <link rel="stylesheet" href={% static "css/base.css" %}>
     <link rel="stylesheet" href={% static "css/buttons.css" %}>
+    <link rel="stylesheet" href={% static "css/header.css" %}>
     <link rel="stylesheet" href={% static "css/cards.css" %}>
     <link rel="stylesheet" href={% static "css/events/css/events.css" %}>
+    <link rel="stylesheet" href={% static "css/footer.css" %}>
 
     <title>Битва кодеров от Альфа-Банк</title>
 </head>
 
 <body>
 
-    <div style="display: flex; justify-content: center; text-align: center;">
+    <!-- Для всех страниц общий хедер -->
+    <header class="header">
+        <a href="{% url 'events' %}">   
+            <div class="header-logo--title--container">
+                <img src={% static "images/events/alfa-name-white.png" %} class="header-title--logo">
+                <p class="logo--text">#БитваКодеров</p>
+            </div>
+        </a>
+
+        <div class="containe--header-buttons">
+
+            <a class="profile-container" href="#">
+                <img class="profile-image" src={% static "images/events/ava.png" %}>
+                <!-- Если это админ -->
+                <div class="profile-user">
+                    <span class="profile-name">{{ user.name }} {{ user.sirname }}</span>
+                    <!-- Если это админ, если нет - не отображать -->
+                    {% if user.is_staff %}
+                    <span class="profile-admin">Admin</span> {% endif %}
+                </div>
+            </a>
+
+
+            {% if user.is_staff %}
+            <a class="admin-panel-button button filled" href="/admin">Перейти в админ-панель</a> {% endif %}
+
+            <form class="form--logout" method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %} {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
+                <button class="profile-logout button filled" type="submit">Выход</button>
+            </form>
+        </div>
+
+        <!-- <button class="profile-logout button filled">Выйти</button> -->
+    </header>
+
+
+    <!-- <div style="display: flex; justify-content: center; text-align: center;">
         <h1>Вы вошли как {{ user.name }} {{ user.sirname }} {% if user.is_staff %} (админ) {% endif %}
         </h1>
 
@@ -35,7 +75,7 @@
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
             <button type="submit">Выход</button>
         </form>
-    </div>
+    </div> -->
 
 
     <!-- Modal window -->
@@ -47,10 +87,12 @@
 
         <div class="modal card">
             <div class="card--top-side">
-                <h3 class="card--title"></h3>
+                <div class="card-top--logo--title">
+                    <img src={% static "images/events/alpha-red.png" %} class="card--time-icon--logo">
+                    <h3 class="card--title"></h3>
+                </div>
                 <div class="card--time">
-                    <!-- ../images/clock-icon.svg -->
-                    <img src="" class="card--time-icon">
+                    <img src={% static "images/events/clock-icon.svg" %} class="card--time-icon">
                     <p class="card--time-text"></p>
                 </div>
             </div>
@@ -67,7 +109,7 @@
                     <h4 class="modal--status"></h4>
                 </div>
                 <div class="modal--span">
-                    <h3>Коичество участников:&nbsp</h3>
+                    <h3>Количество участников:&nbsp</h3>
                     <h4 class="modal--count"></h4>
                 </div>
                 <div class="card--buttons modal--buttons">
@@ -84,7 +126,10 @@
         <!-- Это сама карточка эвента ее можно генерировать в цикле -->
         <div class="event-grid--item card" data-id="{{ elem.id }}">
             <div class="card--top-side">
-                <h3 class="card--title">{{ elem.event_title }}</h3>
+                <div class="card-top--logo--title">
+                    <img src={% static "images/events/alpha-red.png" %} class="card--time-icon--logo">
+                    <h3 class="card--title">{{ elem.event_title }}</h3>
+                </div>
                 <div class="card--time">
                     <img src={% static "images/events/clock-icon.svg" %} class="card--time-icon">
                     <p class="card--time-text">{{ elem.publish_date }}</p>
@@ -95,23 +140,22 @@
                 <img class="card--image" src="{{ elem.event_photo.url }}">
             </figure>
             {% endif %}
-            <div class="card--bottom-side">
+            <div class="card--bottom-side event-grid--bottom-side">
                 <div class="card--text-section">
                     <h4 class="card--text-section-title">Описание</h4>
                     <p class="card--text-section-text">{{ elem.get_text_preview }}</p>
                 </div>
                 <div class="card--buttons">
-                    <a class="enter" data-id="{{ elem.id }}" type="submit">Войти</a>
-                    <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}" type="submit">Подать заявку</a>
-                    <a class="card--secondary-button button text" data-id="{{ elem.id }}" href="{% url 'event_details' %}">Узнать подробнее</a>
-
-
-
+                    <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}"
+                        type="submit">Подать заявку</a>
+                    <a class="card--secondary-button button text" data-id="{{ elem.id }}"
+                        href="{% url 'event_details' %}">Узнать подробнее</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+
     {% else %}
     <div class="events-empty">
         <img src={% static "images/events/times-icon.svg" %} class="events-empty--icon">
@@ -123,6 +167,10 @@
     <script src={% static 'js/jquery-3.5.0.min.js' %}></script>
     <script src={% static 'js/events/script.js' %}></script>
     <script src={% static 'js/events/event_details.js' %}></script>
+
+    <footer>
+
+    </footer>
 
 </body>
 

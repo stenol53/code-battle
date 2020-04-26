@@ -95,6 +95,41 @@
     font-size: 0.9rem;
 }
 
+.problems {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.problem {
+    user-select: none;
+    cursor: pointer;
+    margin: 5px auto;
+    padding: 5px 0;
+    width: 80%;
+    text-align: center;
+    transition: color background-color 0.1s ease;
+}
+
+.problem:hover {
+    color: #F04E4B;
+}
+
+.current {
+    border-radius: 10px;
+    /* padding: 5px 0; */
+    color: white;
+    transition: color background-color 0.2s ease;
+    background-color: #F04E4B;
+    /* background-color: #323232; */
+}
+
+.current:hover {
+    color: white;
+}
+
 @media (max-width: 1000px) {
     .task {
         width: 75%;

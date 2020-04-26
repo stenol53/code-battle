@@ -32,7 +32,6 @@ $.ajaxSetup({
 ///////////////////////////////////////////////
 
 
-
 $(document).ready(function () {
     function onEventClick(e){
         id = $(e).data('id');
