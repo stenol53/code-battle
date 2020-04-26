@@ -151,13 +151,13 @@ function timer() {
                 if (curtime > elem.time || curtime == elem.time) {
                     timeArray.splice(timeArray.indexOf(elem),1)
 
-                    // let enter_button = null;
-                    // $('.hidden').each(function(index, btn) {
-                    //     if ($(btn).data('id') == elem.id) {
-                    //         enter_button = $(btn);
-                    //     }
-                    // })
-                    // enter_button.css("display","none")
+                    let enter_button = null;
+                    $('.hidden').each(function(index, btn) {
+                        if ($(btn).data('id') == elem.id) {
+                            enter_button = $(btn);
+                        }
+                    })  
+                    enter_button.css("display","none")
 
                 } else {
                     let time = elem.time - curtime;
@@ -182,13 +182,14 @@ function timer() {
                     if (hours == 0 && mins < 5 && enter_button.css("display") == "none") {
                         accept_button.css("display", "none")
                         enter_button.css("display", "block")
+                        $(timeTag).html("Состязание началось!");
                         
                     } else if (hours < 24) {
                         if (secs < 10) secs = "0" + secs;
                         if (mins < 10) mins = "0" + mins;
                         if (hours < 10) hours = "0" + hours;
 
-                        $(timeTag).html("До начала осталось: " + hours + ":" + mins + ":" + secs);
+                        $(timeTag).html("Начало через: " + hours + ":" + mins + ":" + secs);
                     }
                     
                 }
