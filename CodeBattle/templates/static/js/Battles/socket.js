@@ -101,7 +101,7 @@ $(document).ready(function () {
             wsStart = "wss://"
         var endpoint = wsStart + loc.host + loc.pathname
         console.log(endpoint)
-        var socket = new ReconnectingWebSocket(endpoint)
+        var socket = new WebSocket(endpoint)
 
         var curQuestionID = 1;
         var curMessage = "";
@@ -150,6 +150,8 @@ $(document).ready(function () {
 
 
                 }
+
+                
                 console.log(curMessage);
                 console.log(answerVariants);
                 console.log(answerEndDate);
@@ -168,7 +170,8 @@ $(document).ready(function () {
                     'ready': true
                 }))    
 
-                $(e.target).replaceWith("<h1 id=\"readyBtn\">Ожидаем готовности оппонента<h2>");
+                // $(e.target).css("display", "none")
+                $('.wait-main-container').css("display", "flex")
             });
         }
 
