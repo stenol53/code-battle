@@ -78,7 +78,11 @@ class BattleConsumer(AsyncConsumer):
                                     Response = {
                                         'type': 'session',
                                         'id': opp.id,
-                                        'start_session': True
+                                        'start_session': True,
+                                        'other_user_name': opp.name,
+                                        'other_sername' : opp.sirname,
+                                        'other_login' : opp,
+                                        'questions_count': self.battle.count,
                                     }
                                     good = True
                                 else:
@@ -97,11 +101,16 @@ class BattleConsumer(AsyncConsumer):
                             good = True
             if json_response["type"] == "session":
                 print(json_response)
+
                 if json_response["id"] == self.me.id:
                     Response = {
                         'type': 'session',
                         'id': self.me.id,
                         'start_session': True,
+                        'other_user_name': self.me.name,
+                        'other_sername' : self.me.sirname,
+                        'other_login' : self.me,
+                        'questions_count': self.battle.count,
                     }
                     good = True
 

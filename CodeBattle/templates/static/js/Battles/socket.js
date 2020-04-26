@@ -120,7 +120,11 @@ $(document).ready(function () {
                     socket.send(JSON.stringify({
                         'type' : 'session',
                         'id' : jsn["id"],
-                        'start_session' : true
+                        'start_session' : true,
+                        'other_user_name': jsn["other_user_name"],
+                        'other_sername' : jsn["other_sername"],
+                        'other_login' : jsn["other_login"],
+                        'questions_count': jsn["questions_count"],
                     }))
                 }
 
