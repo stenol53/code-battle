@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponseRedirect, HttpResponse, JsonResponse
 import json
 from .models import Event
+from Battles.models import Battle, Participent 
 
 app_name = 'events'
 def events(request):
@@ -46,8 +47,13 @@ def accept_event(request):
             if not item_exists:
                 request.user.addEvent(request.POST.get('event_id'))
                 request.session.modified = True
-                ev = Event.objects.get(id = request.POST.get('event_id'))
+                id = request.POST.get('event_id')
+                ev = Event.objects.get(id = id)
+                battle = Battle.objects.get(pk=id)
+                Participent.objects.create(Battle=battle, User=request.user, isReady = False)
                 ev.add_user_to_list(request.user.id)
+
+
                 print(ev.get_users())
         
 
@@ -62,11 +68,16 @@ def accept_event(request):
         
 def deny_event(request):
     if request.method == "POST":
-        request.user.removeEvent(request.POST.get('event_id'))
+        id = request.POST.get('event_id')
+        request.user.removeEvent(id)
         request.session.modified = True 
-        ev = Event.objects.get(id = request.POST.get('event_id'))
+        ev = Event.objects.get(id=id)
         ev.remove_user_from_list(request.user.id)
         print(ev.get_users())
+        for elem in Battle.objects.all():
+            print(elem.id)
+        battle = Battle.objects.get(pk=id)
+        Participent.objects.filter(Battle=battle).filter(User=request.user).delete()
 
     if request.is_ajax():
         data = {

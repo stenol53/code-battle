@@ -3,9 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
     <link rel="stylesheet" href={% static "css/base.css" %}>
     <link rel="stylesheet" href={% static "css/buttons.css" %}>
     <link rel="stylesheet" href={% static "css/core/css/landing.css" %} />
@@ -16,14 +14,14 @@
 
 <body class="land-body">
 
-    <header class="header">
+    <!-- <header class="header">
         <a href="{% url 'events' %}">   
             <div class="header-logo--title--container">
                 <img src={% static "images/events/alfa-name-white.png" %} class="header-title--logo">
                 <p class="logo--text">#БитваКодеров</p>
             </div>
         </a>
-    </header>
+    </header> -->
 
 
     <div class="landing-container">
@@ -33,20 +31,19 @@
             <img src={% static "images/core/alfa-logo-white.png" %} class="icon--logo">
             <h1 class="big-title">СРАЗИСЬ С ДРУГИМИ КОДЕРАМИ И<br>ПОЛУЧИ РАБОТУ В АЛЬФА-БАНК</h1>
         </div>
-        
+
         <div class="container--landing-image--text">
-            
-                <p class="landing--text">
-                    <span style="color:#F04E4B">Альфа-Банк</span> устраивает грандиозные "Битвы кодеров". Это соревнования программистов, в которых каждый может проявить себя. Задания рассчитаны
-                    как на только начинающих кодеров, так и на уже опытных специалистов. Здесь каждый получит море позитивных эмоций, большой опыт, а состязательный
-                    характер не даст заскучать никому. Так же не стоит забывать, что каждый проявивший себя участник, может рассчитывать на трудоустройство
-                    в один из крупнейших банков страны. Дерзайте, все в ваших руках!
-                </p>
-            
+
+            <p class="landing--text">
+                <span style="color:#F04E4B">Альфа-Банк</span> устраивает грандиозные "Битвы кодеров". Это соревнования программистов, в которых каждый может проявить себя. Задания рассчитаны как на только начинающих кодеров, так и на уже опытных специалистов.
+                Здесь каждый получит море позитивных эмоций, большой опыт, а состязательный характер не даст заскучать никому. Так же не стоит забывать, что каждый проявивший себя участник, может рассчитывать на трудоустройство в один из крупнейших банков
+                страны. Дерзайте, все в ваших руках!
+            </p>
+
         </div>
-        
-        
-        
+
+
+
         <div class="bottom-container">
             <!--  -->
             <img class="landing-image" src={% static "images/core/prog_battle.svg" %}>

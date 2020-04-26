@@ -1,0 +1,133 @@
+.land-body {
+    background-color: #1E1E1E;
+    overflow: hidden;
+    font-family: 'Rubik', sans-serif;
+}
+
+.landing-container {
+    /* max-width: 1400px; */
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+}
+
+.landing-left {
+    width: 62%;
+    background-color: white;
+}
+
+.landing-right {
+    width: 38%;
+    background-color: #1E1E1E;
+}
+
+.landing-left--title-container,
+.landing-right--title-container {
+    height: 38vh;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+}
+
+.landing-left--title-container {
+    justify-content: flex-end;
+}
+
+.landing-right--title-container {
+    justify-content: flex-start;
+}
+
+.landing-left--title,
+.landing-right--title {
+    font-size: 3.5rem;
+}
+
+.landing-left--title {
+    color: #F04E4B;
+}
+
+.landing-left--title::first-line {
+    color: #0B1E31;
+}
+
+.landing-right--title {
+    color: #FD2B28;
+}
+
+.landing-right--title::first-line {
+    color: white;
+}
+
+
+/* Left bottom */
+
+.landing-left--hell-container {
+    position: relative;
+    height: 62vh;
+    padding: 0 5%;
+    text-align: justify;
+}
+
+.landing-left--hell {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #C6C6C6;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Right bottom */
+
+.landing-right--bottom-container {
+    height: 62vh;
+    width: 100%;
+}
+
+.landing-right--apply-container {
+    margin: 15% auto;
+    width: 70%;
+}
+
+.landing-right--apply-title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 0;
+    color: white;
+}
+
+.landing-right--apply-text {
+    color: #C6C6C6;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    margin: 20px 0 30px;
+}
+
+.landing-right--apply-button {
+    width: 100%;
+    border-radius: 2px;
+    padding: 20px 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    background-color: #FD2B28;
+}
+
+
+/* Images */
+
+.landing-curves {
+    position: absolute;
+    width: 80%;
+    bottom: -230px;
+    left: 0;
+}
+
+.landing-left--battle-image {
+    position: absolute;
+    width: 50%;
+    bottom: 25%;
+    left: 20%;
+    z-index: 10;
+}

@@ -6,12 +6,20 @@
     <title>Битва Кодеров</title>
 </head>
 <body>
+    <input id="user_id" type="hidden" value="{{ user.id }}">
+    <input id="battle_id" type="hidden" value="{{ id }}">
     <h1>Вы открыли битву номер {{id}}</h1>
-
+    <div class="content">
+        
+    </div>
+    
+    <input id="readybtn" type="submit" value="Готов">
 
 
     {% load static %}
     <script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/moment-with-locales.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
     <script src="{% static 'js/Battles/socket.js' %}"></script>
 </body>
 </html>
