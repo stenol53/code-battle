@@ -151,6 +151,8 @@ $(document).ready(function () {
 
                 }
 
+               
+                
                 
                 console.log(curMessage);
                 console.log(answerVariants);
