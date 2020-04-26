@@ -9,6 +9,7 @@ class Event(models.Model):
     event_status = models.CharField('Текущее состояние ивента', max_length = 20, default="Еще не начался")
     event_photo = models.FileField('Изображение для ивента', upload_to='event_media', blank=True, null=True)    
     competitors_id_list = models.TextField('Список участников', blank=True, default="")
+    
 
     def get_text_preview(self):
         if len(str(self.event_text)) >= 300:

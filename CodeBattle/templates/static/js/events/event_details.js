@@ -37,7 +37,7 @@ closeInfoWindow.addEventListener('click', () => {
     document.querySelector('.info-window').style.display = 'none';
 });
 
-function accept_event() {
+function get_details_event() {
     $('.card--secondary-button').each(function(index, el) {
         $(el).click(function(e) {
             e.preventDefault();
