@@ -107,20 +107,24 @@ $(document).ready(function () {
         var curMessage = "";
         var answerVariants = [];
         var answerEndDate;
+
+
         socket.onmessage = function (e) {
             console.log('message',e);
             
-            if(JSON.parse(e.data)["type"] == "session") {
-                if(JSON.parse(e.data)["id"] != user_id)
+            let jsn = JSON.parse(e.data)
+
+            if(jsn["type"] == "session") {
+                if(jsn["id"] != user_id)
                 {
                     socket.send(JSON.stringify({
                         'type' : 'session',
-                        'id' : JSON.parse(e.data)["id"],
+                        'id' : jsn["id"],
                         'start_session' : true
                     }))
                 }
 
-                if(JSON.parse(e.data)["start_session"] == true){ //СТАРТАНУЛИ ВОПРОСЫ
+                if(jsn["start_session"] == true){ //СТАРТАНУЛИ ВОПРОСЫ
 
                     $("#readyBtn").replaceWith("<h1>НАЧИНАЕМ БЛЯ<h2>");
                     socket.send(JSON.stringify({
@@ -130,13 +134,21 @@ $(document).ready(function () {
                         'question_num': curQuestionID
                     }))
                 }
-            } else if(JSON.parse(e.data)["type"] == "question") {
-                if(JSON.parse(e.data)["method"] == "new") { //ПРИШЕЛ НОВЫЙ ВОПРОС
-                    curMessage = JSON.parse(e.data)["message"]
-                    JSON.parse(e.data)["asnwer_variant"].forEach(element => {
+            } else if(jsn["type"] == "question") {
+                if(jsn["method"] == "new") { //ПРИШЕЛ НОВЫЙ ВОПРОС
+
+                        console.log(jsn);
+                    curMessage = jsn["message"]
+                        console.log(curMessage);
+                    var json = jsn["answer_variant"]
+                        console.log(json);
+                    
+                    json.forEach(element => {
                         answerVariants.push(element)
                     });
-                    answerEndDate = Date(JSON.parse(e.data)["answer_end_date"])
+                    answerEndDate = Date(jsn["answer_end_date"])
+
+
                 }
                 console.log(curMessage);
                 console.log(answerVariants);
