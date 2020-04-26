@@ -32,6 +32,7 @@ $.ajaxSetup({
 ///////////////////////////////////////////////
 
 
+
 $(document).ready(function () {
     function onEventClick(e){
         id = $(e).data('id');
@@ -94,26 +95,113 @@ $(document).ready(function () {
         });
     }
     
-    function check_state() {  
-        $.getJSON("/events/api", (json) => {
-            if(json !== null){
-                for( let i = 0; i < json.length; i++)
-                {
-                    $(".card--main-button").each(function (index, el) {
-                        let id = $(el).data('id');
-                        console.log(id);
-                        console.log(json[i].event_id.toString());
-                        if(json[i].event_id == id) {
-                            $(el).addClass('accepted');
-                            $(el).text('Отменить заявку');
+    // function check_state() {  
+    //     $.getJSON("/events/api", (json) => {
+    //         if(json !== null){
+    //             for( let i = 0; i < json.length; i++)
+    //             {
+    //                 $(".card--main-button").each(function (index, el) {
+    //                     let id = $(el).data('id');
+    //                     console.log(id);
+    //                     console.log(json[i].event_id.toString());
+    //                     if(json[i].event_id == id) {
+    //                         $(el).addClass('accepted');
+    //                         $(el).text('Отменить заявку');
+    //                     }
+    //                 });
+    //             }
+    //         }
+    //     })
+    // }
+
+    var timeArray = []
+
+function check_state() {  
+    $.getJSON("/events/api", (json) => {
+        if(json !== null){
+            for( let i = 0; i < json.length; i++)
+            {
+                $(".card--main-button").each(function (index, el) {
+                    let id = $(el).data('id');
+                    console.log(id);
+                    console.log(json[i].event_id.toString());
+                    if(json[i].event_id == id && json[i].accepted == true) {
+                        $(el).addClass('accepted');
+                        $(el).text('Отменить заявку');
+                    }
+                });
+
+                timeArray.push( {'id' : json[i].event_id, 'time' : new Date(json[i].time)} )
+            }
+
+            ///////////////////
+            setInterval(timer, 1000)
+        }
+    })
+}
+
+function timer() {
+
+    timeArray.forEach((elem) => {
+        $(".card--time-text").each(function(index, timeTag) {
+
+            if ($(timeTag).data('id') == elem.id) {
+                let curtime = Date.now();
+            
+                if (curtime > elem.time || curtime == elem.time) {
+                    timeArray.splice(timeArray.indexOf(elem),1)
+
+                    // let enter_button = null;
+                    // $('.hidden').each(function(index, btn) {
+                    //     if ($(btn).data('id') == elem.id) {
+                    //         enter_button = $(btn);
+                    //     }
+                    // })
+                    // enter_button.css("display","none")
+
+                } else {
+                    let time = elem.time - curtime;
+                    let secs = Math.trunc(time / 1000 % 60 );
+                    let mins = Math.trunc(time / 1000 / 60 % 60);
+                    let hours = Math.trunc(time / 1000 / 3600);
+                    
+                    let enter_button = null;
+                    $('.hidden').each(function(index, btn) {
+                        if ($(btn).data('id') == elem.id) {
+                            enter_button = $(btn);
                         }
-                    });
+                    })
+
+                    let accept_button = null;
+                    $('.accept').each(function(index, btn) {
+                        if ($(btn).data('id') == elem.id) {
+                            accept_button = $(btn);
+                        }
+                    })
+
+                    if (hours == 0 && mins < 5 && enter_button.css("display") == "none") {
+                        accept_button.css("display", "none")
+                        enter_button.css("display", "block")
+                        
+                    } else if (hours < 24) {
+                        if (secs < 10) secs = "0" + secs;
+                        if (mins < 10) mins = "0" + mins;
+                        if (hours < 10) hours = "0" + hours;
+
+                        $(timeTag).html("До начала осталось: " + hours + ":" + mins + ":" + secs);
+                    }
+                    
                 }
             }
         })
-    }
+    })
 
+}
+
+    get_details_event()
     accept_event();
     check_state();
     set_event_click();
 });
+
+

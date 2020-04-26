@@ -99,6 +99,18 @@
     height: 100px;
 }
 
+.hidden {
+    display: none;
+    background-color: green;
+}
+
+.hidden:hover {
+    background-color: greenyellow;
+}
+
+.accept {
+    display: block;
+}
 
 /* .close-info-button:hover {
     background-color: rgba(255, 255, 255, 0.6);

@@ -56,28 +56,6 @@
         <!-- <button class="profile-logout button filled">Выйти</button> -->
     </header>
 
-
-    <!-- <div style="display: flex; justify-content: center; text-align: center;">
-        <h1>Вы вошли как {{ user.name }} {{ user.sirname }} {% if user.is_staff %} (админ) {% endif %}
-        </h1>
-
-
-        {% if user.is_staff %}
-        <form style="padding-top: 25px; padding-left: 25px;" action="/admin">
-            <button type="submit">Перейти в админ-панель</button>
-        </form>
-
-        {% endif %}
-
-
-        <form style="padding-top: 25px; padding-left: 25px;" method="post" action="{% url 'account_logout' %}">
-            {% csrf_token %} {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
-            <button type="submit">Выход</button>
-        </form>
-    </div> -->
-
-
     <!-- Modal window -->
     <section class="info-window">
 
@@ -132,7 +110,7 @@
                 </div>
                 <div class="card--time">
                     <img src={% static "images/events/clock-icon.svg" %} class="card--time-icon">
-                    <p class="card--time-text">{{ elem.publish_date }}</p>
+                    <p class="card--time-text" data-id="{{ elem.id }}">{{ elem.publish_date }}</p>
                 </div>
             </div>
             {% if elem.event_photo %}
@@ -146,13 +124,16 @@
                     <p class="card--text-section-text">{{ elem.get_text_preview }}</p>
                 </div>
                 <div class="card--buttons">
-                    <a class="event-grid--apply card--main-button button filled" data-id="{{ elem.id }}"
+                    <a class="event-grid--apply card--main-button button filled hidden" data-id="{{ elem.id }}"
+                        type="submit">Войти</a>
+                    <a class="event-grid--apply card--main-button button filled accept" data-id="{{ elem.id }}"
                         type="submit">Подать заявку</a>
                     <a class="card--secondary-button button text" data-id="{{ elem.id }}"
                         href="{% url 'event_details' %}">Узнать подробнее</a>
                 </div>
             </div>
         </div>
+        
         {% endfor %}
     </div>
 
@@ -167,7 +148,6 @@
     <script src={% static 'js/jquery-3.5.0.min.js' %}></script>
     <script src={% static 'js/events/script.js' %}></script>
     <script src={% static 'js/events/event_details.js' %}></script>
-
     <footer>
 
     </footer>
