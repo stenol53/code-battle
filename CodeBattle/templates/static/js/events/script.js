@@ -188,7 +188,7 @@ function timer() {
                         if (mins < 10) mins = "0" + mins;
                         if (hours < 10) hours = "0" + hours;
 
-                        $(timeTag).html("До начала осталось: " + hours + ":" + mins + ":" + secs);
+                        $(timeTag).html("Начала через: " + hours + ":" + mins + ":" + secs);
                     }
                     
                 }
