@@ -23,14 +23,27 @@ class Participent(admin.TabularInline):
 class Round(admin.TabularInline):
     model = Round
 
+class Task(admin.TabularInline):
+    model = Task
+
+# class AnswerVariant(admin.TabularInline):
+#     model = AnswerVariant
+
 class BattleAdmin(admin.ModelAdmin):
-    inlines = [Participent, Round]
+    inlines = [Participent, Round, Task]
     class Meta:
         model = Battle
 
+# class TaskAdmin(admin.TabularInline):
+#     inlines = [AnswerVariant]
+#     class Meta:
+#         model = Task
+
 admin.site.register(Battle,BattleAdmin)
+# admin.site.register(Task,TaskAdmin)
+
 
 # admin.site.register(models.Battle)
-admin.site.register(Task)
+# admin.site.register(Task)
 admin.site.register(AnswerVariant)
 # admin.site.register(models.Participent)

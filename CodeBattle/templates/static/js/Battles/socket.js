@@ -103,9 +103,46 @@ $(document).ready(function () {
         console.log(endpoint)
         var socket = new ReconnectingWebSocket(endpoint)
 
-
+        var curQuestionID = 1;
+        var curMessage = "";
+        var answerVariants = [];
+        var answerEndDate;
         socket.onmessage = function (e) {
             console.log('message',e);
+            
+            if(JSON.parse(e.data)["type"] == "session") {
+                if(JSON.parse(e.data)["id"] != user_id)
+                {
+                    socket.send(JSON.stringify({
+                        'type' : 'session',
+                        'id' : JSON.parse(e.data)["id"],
+                        'start_session' : true
+                    }))
+                }
+
+                if(JSON.parse(e.data)["start_session"] == true){ //СТАРТАНУЛИ ВОПРОСЫ
+
+                    $("#readyBtn").replaceWith("<h1>НАЧИНАЕМ БЛЯ<h2>");
+                    socket.send(JSON.stringify({
+                        'type': 'question',
+                        'method': 'next',
+                        'id': user_id,
+                        'question_num': curQuestionID
+                    }))
+                }
+            } else if(JSON.parse(e.data)["type"] == "question") {
+                if(JSON.parse(e.data)["method"] == "new") { //ПРИШЕЛ НОВЫЙ ВОПРОС
+                    curMessage = JSON.parse(e.data)["message"]
+                    JSON.parse(e.data)["asnwer_variant"].forEach(element => {
+                        answerVariants.push(element)
+                    });
+                    answerEndDate = Date(JSON.parse(e.data)["answer_end_date"])
+                }
+                console.log(curMessage);
+                console.log(answerVariants);
+                console.log(answerEndDate);
+            }
+
         }
 
         socket.onopen = function (e) {
@@ -119,7 +156,7 @@ $(document).ready(function () {
                     'ready': true
                 }))    
 
-                $(e.target).replaceWith("<h1>Ожидаем готовности оппонента<h2>");
+                $(e.target).replaceWith("<h1 id=\"readyBtn\">Ожидаем готовности оппонента<h2>");
             });
         }
 
