@@ -3,30 +3,21 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../../CodeBattle/templates/static/css/base.css" />
+		<link rel="stylesheet" href="loader.css" />
 		<link rel="stylesheet" href="wait.css" />
 		<title>Document</title>
 	</head>
 	<body>
 		<main class="wait-main-container">
-			<!-- Хедер -->
-			<header class="header">
-				<a class="profile-container" href="#">
-					<img class="profile-image" src="../../CodeBattle/templates/static/images/events/times-icon.svg" />
-					<!-- Если это админ -->
-					<div class="profile-user">
-						<span class="profile-name">Maks</span>
-						<!-- Если это админ, если нет - не отображать -->
-						<span class="profile-admin">Admin</span>
-					</div>
-				</a>
-				<button class="profile-logout button filled">Выйти</button>
-			</header>
-
-			<div class="game">
-				<div class="game--number"></div>
-				<div class="game--grid">
-					<div class="game--element"></div>
+			<div class="wait">
+				<div class="lds-ring">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
 				</div>
+				<div class="wait--text">Ожидание начала раунда...</div>
 			</div>
 		</main>
 	</body>
