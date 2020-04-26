@@ -129,8 +129,8 @@ class BattleConsumer(AsyncConsumer):
                                 
                                 Response = {
                                     'type' : 'question',
-                                    'id' : self.me.id
-                                    'message' : get_question_data.question,
+                                    'id' : self.me.id,
+                                    'message' : get_question_data.question, 
                                     'answer_variant' : av_lst 
                                 }
                              
