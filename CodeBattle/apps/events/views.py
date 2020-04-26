@@ -10,14 +10,12 @@ def events(request):
         return render(request, 'events.html', {'latest_events_list' : latest_events_list})
     else:
         return render(request,'account/login.html',{'message': "Авторизируйтесь, чтобы просматривать эту страницу"})
-    
 
 def event_details(request):
     if request.method == "GET":
         event_id = request.GET.get('event_id')
         event = Event.objects.get(id = event_id)
-        print(event)
-        print(event.get_users_count())
+
         data = {
             'title' : event.event_title,
             'text' : event.event_text,
@@ -36,7 +34,6 @@ def event_details(request):
     #     raise Http404("Ивент не найден!")
 
     # return render(request, 'event_details.html', {'event' : event})
-
 
 
 def accept_event(request):
@@ -82,16 +79,15 @@ def deny_event(request):
 
 def get_events_api(request):
     # return JsonResponse(request.session.get('event_list'),safe = False)
-    lst = request.user.getAcceptedEvents()
     jsn = list()
-    for elem in lst:
-        if elem:
-            i = elem
-            data = {
-                'event_id': i
-            }
-            jsn.append(data)
-        
+    for elem in Event.objects.all():
+        elem_id = int(elem.id)
+        data = {
+            'event_id': elem_id,
+            'accepted': request.user.is_accepted_event(elem.id),
+            'time': elem.publish_date
+        }
+        jsn.append(data)
 
     return JsonResponse(jsn,safe=False)
     # return HttpResponse(request, data, content_type='applocation/json')
